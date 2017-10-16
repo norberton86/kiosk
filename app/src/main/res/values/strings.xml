@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">DDC</string>
+    <string name="activity_search">Search</string>
+    <string name="activity_search_reservation">Please enter your name to locate your reservation</string>
+    <string name="fa_icon_user">&#xf007;</string>
+    <string name="fa_icon_qrcode">&#xf029;</string>
+    <string name="fa_icon_check_circle">&#xf058;</string>
+    <string name="activity_search_button_scan">SCAN INVITATION</string>
+    <string name="activity_search_user_login">SIGN IN</string>
+</resources>
