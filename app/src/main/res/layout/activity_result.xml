@@ -31,15 +31,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:layout_marginTop="5dp"
                 android:gravity="center"
                 android:text="@string/activity_result_reservation" />
-
-
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:weightSum="1" android:orientation="vertical">
+
+                 <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                 android:layout_weight="0.9"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal"
@@ -180,7 +183,19 @@
 
             </LinearLayout>
 
+                <Button
+                    android:id="@+id/UserConfirm"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.1"
+                    android:text="@string/activity_results_confirm"
+                    android:textColor="#FFFF"
+                    android:theme="@style/User.Button"
+                    android:layout_marginLeft="350dp"
+                    android:layout_marginRight="350dp"/>
 
+            </LinearLayout>
         </LinearLayout>
 
 </RelativeLayout>
