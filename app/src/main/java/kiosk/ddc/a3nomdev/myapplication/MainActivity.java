@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,11 +23,11 @@ public class MainActivity extends AppCompatActivity {
         //load the images from Font Awesome Icon
         Typeface iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
         FontManager.markAsIconContainer(findViewById(R.id.mio), iconFont);
-        FontManager.markAsIconContainer(findViewById(R.id.mio2), iconFont);
 
-        Button btn = (Button) findViewById(R.id.buttonScan);
 
-        btn.setOnClickListener(new View.OnClickListener() {
+        TextView scan = (TextView) findViewById(R.id.scanImage);
+
+        scan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ScanActivity.class);
