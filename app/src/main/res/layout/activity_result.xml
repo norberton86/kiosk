@@ -58,7 +58,7 @@
                         android:layout_height="40dp"
                         android:orientation="horizontal"
                         android:gravity="center_vertical"
-                        android:background="#FFD4D2D2"
+                        android:background="#e7e5e5"
                         >
 
                         <TextView
@@ -91,7 +91,45 @@
                     android:background="@drawable/border"
                     android:layout_marginLeft="5dp">
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        >
 
+                        <TextView
+                            android:id="@+id/textViewMain"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Willner, Yaakov "
+                            android:layout_marginLeft="10dp"/>
+
+                        <View
+                            android:layout_width="1px"
+                            android:layout_height="fill_parent"
+                            android:background="#FFD4D2D2"
+                            android:layout_marginTop="7dp"
+                            android:layout_marginBottom="7dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"/>
+
+                        <TextView
+                            android:id="@+id/textViewTable"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Table - 49" />
+
+
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_height="1px"
+                        android:layout_width="fill_parent"
+                        android:background="#FFD4D2D2"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"/>
 
 
                 </LinearLayout>
