@@ -11,13 +11,16 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import kiosk.ddc.a3nomdev.myapplication.adapter.AccompanyAdapter;
 import kiosk.ddc.a3nomdev.myapplication.adapter.MainAdapter;
 import kiosk.ddc.a3nomdev.myapplication.adapter.RecyclerViewOnItemClickListener;
+import kiosk.ddc.a3nomdev.myapplication.model.Accompany;
 import kiosk.ddc.a3nomdev.myapplication.model.Client;
 
 public class ResultActivity extends AppCompatActivity {
 
     private List<Client> clients;
+    private List<Accompany> accompanies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,13 @@ public class ResultActivity extends AppCompatActivity {
         recyclerView.setAdapter(new MainAdapter(clients,this));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this,0));
+
+        initAccompanies();
+
+        RecyclerView recyclerViewAccompany = (RecyclerView) findViewById(R.id.recyclerViewAccompany);
+        recyclerViewAccompany.setAdapter(new AccompanyAdapter(accompanies,this));
+        recyclerViewAccompany.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewAccompany.addItemDecoration(new DividerItemDecoration(this,0));
     }
 
     public void Show(Client c)
@@ -53,4 +63,25 @@ public class ResultActivity extends AppCompatActivity {
         clients.add(new Client(1,"Smith Rick","4650 Same Place St"));
         clients.add(new Client(1,"Smith Rick","4650 Same Place St"));
     }
+
+    private void initAccompanies() {
+        accompanies = new ArrayList<Accompany>();
+
+        accompanies.add(new Accompany(false,"Willner, Jane"));
+        accompanies.add(new Accompany(false,"Willner, Jane"));
+        accompanies.add(new Accompany(false,"Willner, Jane"));
+        accompanies.add(new Accompany(false,"Willner, Jane"));
+        accompanies.add(new Accompany(false,"Willner, Jane"));
+        accompanies.add(new Accompany(false,"Willner, Jane"));
+        accompanies.add(new Accompany(false,"Willner, Jane"));
+        accompanies.add(new Accompany(false,"Willner, Jane"));
+        accompanies.add(new Accompany(false,"Willner, Jane"));
+        accompanies.add(new Accompany(false,"Willner, Jane"));
+        accompanies.add(new Accompany(false,"Willner, Jane"));
+        accompanies.add(new Accompany(false,"Willner, Jane"));
+
+
+    }
+
+
 }

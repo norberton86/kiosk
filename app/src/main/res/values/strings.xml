@@ -2,6 +2,7 @@
     <string name="app_name">DDC</string>
     <string name="activity_search">Search</string>
     <string name="activity_results">Results</string>
+    <string name="activity_results_accomponay">Accompany by</string>
     <string name="activity_search_reservation">Please enter your name to locate your reservation</string>
     <string name="activity_result_reservation">Description about the company results</string>
     <string name="fa_icon_user">&#xf007;</string>
