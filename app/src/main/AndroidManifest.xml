@@ -17,22 +17,18 @@
             android:label="@string/activity_search"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateHidden">
-           <!-- <intent-filter>
+           <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>  -->
+            </intent-filter>
         </activity>
         <activity android:name=".ScanActivity" />
         <activity android:name=".ResultActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/activity_results"
             android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
