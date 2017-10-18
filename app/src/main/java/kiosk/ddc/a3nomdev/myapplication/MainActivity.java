@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.UserLogin)
     void userClick() {
-        goResults();
-
+//        goResults();
+CallWebService();
 
     }
 
@@ -51,8 +51,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void CallWebService() {
-        ddcService.getUserData().subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
+        ddcService.getUserData()
                 .subscribe(new Observer<GitHub>() {
 
                                @Override

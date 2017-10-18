@@ -7,6 +7,8 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 /**
  * Created by 3nomdev on 10/18/17.
@@ -33,6 +35,8 @@ public class ddcService {
     public static Observable<GitHub> getUserData()
     {
         Create();
-        return ddcEndPoint.getUserData("ahmedrizwan");
+        return  ddcEndPoint.getUserData("ahmedrizwan")
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 }
