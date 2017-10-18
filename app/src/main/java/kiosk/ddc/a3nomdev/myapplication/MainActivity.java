@@ -40,28 +40,34 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.UserLogin)
     void userClick() {
-        //goResults();
+        goResults();
 
-        ddcService.getUserData().subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<GitHub>() {
 
-                               @Override
-                               public void onCompleted() { }
-
-                               @Override
-                               public void onError(Throwable e) { }
-
-                               @Override
-                               public void onNext(GitHub git) {
-                                   Toast.makeText(MainActivity.this,git.getName(),Toast.LENGTH_SHORT).show();
-                               }
-                           }
-                );
     }
 
     private void goResults() {
         Intent intent = new Intent(MainActivity.this, ResultActivity.class);
         startActivity(intent);
+    }
+
+    private void CallWebService() {
+        ddcService.getUserData().subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<GitHub>() {
+
+                               @Override
+                               public void onCompleted() {
+                               }
+
+                               @Override
+                               public void onError(Throwable e) {
+                               }
+
+                               @Override
+                               public void onNext(GitHub git) {
+                                   Toast.makeText(MainActivity.this, git.getName(), Toast.LENGTH_SHORT).show();
+                               }
+                           }
+                );
     }
 }
