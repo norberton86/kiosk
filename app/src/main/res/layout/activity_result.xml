@@ -41,10 +41,10 @@
                 android:layout_height="match_parent"
                 android:weightSum="1" android:orientation="vertical">
 
-                 <LinearLayout
+                <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                 android:layout_weight="0.9"
+                 android:layout_weight="0.85"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal"
@@ -165,15 +165,20 @@
                             android:scrollbars="vertical"
                             android:layout_width="match_parent"/>
 
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="0.05"/>
 
                         <Button
+                            android:layout_marginBottom="10dp"
                             android:id="@+id/buttonCheckIn"
                             style="@style/Widget.AppCompat.Button.Colored"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_marginLeft="30dp"
                             android:layout_marginRight="30dp"
-                            android:layout_weight="0.15"
+                            android:layout_weight="0.1"
                             android:text="SELECT ALL"
                             android:textColor="#FFFF"
                             android:theme="@style/User.Button" />
@@ -185,6 +190,11 @@
 
             </LinearLayout>
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.05"/>
+
                 <Button
                     android:id="@+id/UserConfirm"
                     style="@style/Widget.AppCompat.Button.Colored"
@@ -195,7 +205,8 @@
                     android:textColor="#FFFF"
                     android:theme="@style/User.Button"
                     android:layout_marginLeft="350dp"
-                    android:layout_marginRight="350dp"/>
+                    android:layout_marginRight="350dp"
+                    android:layout_marginBottom="15dp"/>
 
             </LinearLayout>
         </LinearLayout>
