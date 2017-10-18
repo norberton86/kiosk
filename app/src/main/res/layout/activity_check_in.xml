@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="4"
+    android:orientation="horizontal"
+    tools:context="kiosk.ddc.a3nomdev.myapplication.CheckInActivity">
+
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"></LinearLayout>
+
+
+
+    <RelativeLayout
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:layout_width="0dp">
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:layout_margin="40dp"
+                android:background="@drawable/border">
+
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:text="Check-in complete" />
+
+                <View
+                    android:layout_marginTop="10dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="#FFD4D2D2" />
+
+                <TextView
+                    android:id="@+id/textViewMainFinal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Yaakov Willner"
+                    android:textStyle="bold"
+                    android:textSize="25sp"
+                    android:gravity="center"
+                    android:layout_marginTop="5dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3" android:gravity="center">
+
+
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:id="@+id/textViewTableMainFinal"
+                        android:background="#000"
+                        android:textSize="18sp"
+                        android:text="Table - 49"
+                        android:textColor="#fff"
+                        android:gravity="center"
+                        />
+
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textViewAccompanyFinal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_results_accomponay"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="center"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerViewFinals"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.6"
+                        android:scrollbars="vertical">
+
+                    </android.support.v7.widget.RecyclerView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.4"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/textView11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="You have completed Check-in" />
+
+                        <TextView
+                            android:id="@+id/textView10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Please print badges" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:weightSum="3" android:orientation="horizontal"
+                            android:gravity="center">
+
+                            <Button
+                                android:layout_weight="1.5"
+                                android:id="@+id/buttonPrint"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:text="Print"
+                                style="@style/Widget.AppCompat.Button.Colored"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        <TextView
+                android:layout_marginTop="14dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:textSize="80sp"
+                android:textColor="@color/colorScan"
+                android:text="@string/fa_icon_check_circle"
+                android:id="@+id/checkImage"/>
+
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"></LinearLayout>
+</LinearLayout>

@@ -1,6 +1,7 @@
 package kiosk.ddc.a3nomdev.myapplication;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -8,6 +9,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -46,6 +49,15 @@ public class ResultActivity extends AppCompatActivity {
         recyclerViewAccompany.setAdapter(new AccompanyAdapter(accompanies,this));
         recyclerViewAccompany.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewAccompany.addItemDecoration(new DividerItemDecoration(this,0));
+
+        Button login=(Button)findViewById(R.id.UserConfirm);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ResultActivity.this, CheckInActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     public void Show(Client c)
