@@ -3,6 +3,7 @@ package kiosk.ddc.a3nomdev.myapplication;
 import android.content.Intent;
 import android.graphics.Typeface;
 
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -30,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
         //load the images from Font Awesome Icon
         Typeface iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
         FontManager.markAsIconContainer(findViewById(R.id.mio), iconFont);
+
+        /*Drawable d=getResources().getDrawable(R.drawable.banner);
+        getSupportActionBar().setBackgroundDrawable(d);*/
 
     }
 
