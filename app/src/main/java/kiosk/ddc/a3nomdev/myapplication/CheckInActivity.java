@@ -23,8 +23,8 @@ public class CheckInActivity extends AppCompatActivity {
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
 
-        actionBar.setDisplayHomeAsUpEnabled(true);
 
+        actionBar.setDisplayHomeAsUpEnabled(true);
         Typeface iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
         FontManager.markAsIconContainer(findViewById(R.id.checkImage), iconFont);
 
