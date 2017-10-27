@@ -19,6 +19,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 import kiosk.ddc.a3nomdev.myapplication.adapter.AccompanyAdapter;
 import kiosk.ddc.a3nomdev.myapplication.adapter.MainAdapter;
+import kiosk.ddc.a3nomdev.myapplication.model.Id;
 import kiosk.ddc.a3nomdev.myapplication.model.User;
 import kiosk.ddc.a3nomdev.myapplication.model.UserCollection;
 import kiosk.ddc.a3nomdev.myapplication.service.ddcService;
@@ -68,14 +69,58 @@ public class ResultActivity extends AppCompatActivity {
 
     }
 
+    ArrayList<Integer> getIds()
+    {
+        ArrayList<Integer> result=new ArrayList<Integer>();
+        for(User u: friends)  //collect all selected ids
+        {
+            if(u.getCheckIn())
+            {
+                result.add(u.getUserID());
+            }
+        }
+
+        result.add(userSelected.getUserID());
+
+        return result;
+    }
+
     @OnClick(R.id.UserConfirm)
     void check() {
-        Intent intent = new Intent(ResultActivity.this, CheckInActivity.class);
-        UserCollection uc=new UserCollection();
-        uc.setUser(userSelected);
-        uc.setUsers(friends);
-        intent.putExtra("UserCollection",uc);
-        startActivity(intent);
+
+
+        ddcService.Post(userSelected.getResevationId(),getIds())
+                .subscribe(new Observer<String>() {
+
+                               @Override
+                               public void onCompleted() {
+                               }
+
+                               @Override
+                               public void onError(Throwable e) {
+                                   Toast.makeText(ResultActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                               }
+
+                               @Override
+                               public void onNext(String result) {
+
+                                   if(result.equalsIgnoreCase("Done"))
+                                   {
+                                       Intent intent = new Intent(ResultActivity.this, CheckInActivity.class);
+                                       UserCollection uc = new UserCollection();
+                                       uc.setUser(userSelected);
+                                       uc.setUsers(friends);
+                                       intent.putExtra("UserCollection", uc);
+                                       startActivity(intent);
+                                   }
+
+                               }
+                           }
+                );
+
+
+
+
     }
 
 

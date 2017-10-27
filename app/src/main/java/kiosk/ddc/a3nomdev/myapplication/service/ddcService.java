@@ -1,9 +1,14 @@
 package kiosk.ddc.a3nomdev.myapplication.service;
 
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.util.ArrayList;
 import java.util.List;
 
 import kiosk.ddc.a3nomdev.myapplication.endPoint.ddcEndpoint;
+import kiosk.ddc.a3nomdev.myapplication.model.Id;
 import kiosk.ddc.a3nomdev.myapplication.model.User;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
@@ -24,9 +29,13 @@ public class ddcService {
     {
         if(retrofit==null)
         {
+            Gson gson = new GsonBuilder()
+                    .setLenient()
+                    .create();
+
             retrofit = new Retrofit.Builder()
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(gson))
                     .baseUrl(ddcEndpoint.SERVICE_ENDPOINT)
                     .build();
 
@@ -46,6 +55,15 @@ public class ddcService {
     {
         Create();
         return  ddcEndPoint.GetFriends(id,reservationId)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public static Observable<String> Post(int reservationId, ArrayList<Integer> value)
+    {
+
+        Create();
+        return  ddcEndPoint.Post(reservationId,value)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread());
     }

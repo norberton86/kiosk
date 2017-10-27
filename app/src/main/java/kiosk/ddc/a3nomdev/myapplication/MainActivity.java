@@ -49,29 +49,29 @@ public class MainActivity extends AppCompatActivity {
         editTextName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_NEXT ||actionId == EditorInfo.IME_ACTION_GO||actionId == EditorInfo.IME_ACTION_DONE) {
-                    navAndGo();
-                    return true;
-                }
-                else {
-                    return false;
-                }
+                return F( v,  actionId,  event);
             }
         });
 
         editTextCompany.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_NEXT ||actionId == EditorInfo.IME_ACTION_GO ||actionId == EditorInfo.IME_ACTION_DONE) {
-                    navAndGo();
-                    return true;
-                }
-                else {
-                    return false;
-                }
+                return F( v,  actionId,  event);
             }
         });
 
+    }
+
+
+    boolean F(TextView v, int actionId, KeyEvent event)
+    {
+        if (actionId == EditorInfo.IME_ACTION_NEXT ||actionId == EditorInfo.IME_ACTION_GO ||actionId == EditorInfo.IME_ACTION_DONE) {
+            navAndGo();
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 
