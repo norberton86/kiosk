@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -43,6 +46,32 @@ public class MainActivity extends AppCompatActivity {
         /*Drawable d=getResources().getDrawable(R.drawable.banner);
         getSupportActionBar().setBackgroundDrawable(d);*/
 
+        editTextName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_NEXT ||actionId == EditorInfo.IME_ACTION_GO||actionId == EditorInfo.IME_ACTION_DONE) {
+                    navAndGo();
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        });
+
+        editTextCompany.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_NEXT ||actionId == EditorInfo.IME_ACTION_GO ||actionId == EditorInfo.IME_ACTION_DONE) {
+                    navAndGo();
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        });
+
     }
 
 
@@ -71,6 +100,11 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.UserLogin)
     void userClick() {
 
+       navAndGo();
+    }
+
+    void navAndGo()
+    {
         if(loginType.equalsIgnoreCase("company")&&editTextCompany.getText().toString().equalsIgnoreCase(""))
         {
             Toast.makeText(MainActivity.this,"Fill the field COMPANY",Toast.LENGTH_SHORT).show();
