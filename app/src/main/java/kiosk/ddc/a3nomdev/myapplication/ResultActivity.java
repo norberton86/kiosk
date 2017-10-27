@@ -30,7 +30,7 @@ public class ResultActivity extends AppCompatActivity {
     @InjectView(R.id.recyclerViewAccompany) RecyclerView recyclerViewAccompany;
     @InjectView(R.id.textViewTable) TextView textViewTable;
     @InjectView(R.id.textViewMain) TextView textViewMain;
-
+    @InjectView(R.id.textViewCompanyName) TextView textViewCompanyName;
 
     User userSelected;
     List<User> friends;
@@ -50,6 +50,10 @@ public class ResultActivity extends AppCompatActivity {
         Intent i = getIntent();
         UserCollection uc = (UserCollection)i.getSerializableExtra("UserCollection");
 
+        if(uc.getLoginType().equalsIgnoreCase("company"))
+        textViewCompanyName.setText(uc.getUser().getCompanyName());
+        else
+            textViewCompanyName.setText("Results");
 
         recyclerView.setAdapter(new MainAdapter(uc.getUsers(),this));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

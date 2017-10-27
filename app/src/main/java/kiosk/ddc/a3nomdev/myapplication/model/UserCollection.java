@@ -11,6 +11,15 @@ import java.util.List;
 public class UserCollection implements Serializable {
     User user;
     private List<User> users;
+    private String loginType;
+
+    public String getLoginType() {
+        return loginType;
+    }
+
+    public void setLoginType(String loginType) {
+        this.loginType = loginType;
+    }
 
     public User getUser() {
         return user;

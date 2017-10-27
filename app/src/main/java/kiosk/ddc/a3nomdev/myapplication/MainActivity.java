@@ -15,6 +15,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import butterknife.OnFocusChange;
 import kiosk.ddc.a3nomdev.myapplication.model.User;
 import kiosk.ddc.a3nomdev.myapplication.model.UserCollection;
 import kiosk.ddc.a3nomdev.myapplication.service.ddcService;
@@ -24,6 +25,7 @@ import rx.Observer;
 public class MainActivity extends AppCompatActivity {
 
     public static String codigo;
+    private String loginType="name";
 
     @InjectView(R.id.editTextName) EditText editTextName;
     @InjectView(R.id.editTextCompany) EditText editTextCompany;
@@ -43,6 +45,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+
+    @OnFocusChange(R.id.editTextName)
+    void nameSelected() {
+        loginType="name";
+        editTextCompany.setText("");
+    }
+
+    @OnFocusChange(R.id.editTextCompany)
+    void companySelected() {
+        loginType="company";
+        editTextName.setText("");
+    }
+
+
+    //---------------------------------------------------------------------------
+
     @OnClick(R.id.scanImage)
     void scanClick() {
         Intent intent = new Intent(MainActivity.this, ScanActivity.class);
@@ -51,18 +70,38 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.UserLogin)
     void userClick() {
-          CallWebService();
+
+        if(loginType.equalsIgnoreCase("company")&&editTextCompany.getText().toString().equalsIgnoreCase(""))
+        {
+            Toast.makeText(MainActivity.this,"Fill the field COMPANY",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(loginType.equalsIgnoreCase("name")&&editTextName.getText().toString().equalsIgnoreCase(""))
+        {
+            Toast.makeText(MainActivity.this,"Fill the field NAME",Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        CallWebService();
     }
 
     private void goResults(UserCollection u) {
         Intent intent = new Intent(MainActivity.this, ResultActivity.class);
+        u.setLoginType(loginType);
         intent.putExtra("UserCollection",u);
         startActivity(intent);
     }
 
     private void CallWebService() {
 
-        ddcService.Get(editTextName.getText().toString(),"name")
+        String data;
+        if(loginType.equalsIgnoreCase("company"))
+        data=editTextCompany.getText().toString();
+        else
+        data=editTextName.getText().toString();
+
+        ddcService.Get(data,"name")
                 .subscribe(new Observer<List<User>>() {
 
                                @Override
@@ -78,7 +117,14 @@ public class MainActivity extends AppCompatActivity {
                                public void onNext(List<User> u) {
 
                                    UserCollection uc= new UserCollection();
+
+                                   User user=new User();
+                                   user.setCompanyName(u.get(0).getCompanyName());
+
+                                   uc.setUser(user);
                                    uc.setUsers(u);
+
+
                                    goResults(uc);
                                }
                            }

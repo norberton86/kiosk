@@ -69,7 +69,7 @@
                         >
 
                         <TextView
-                            android:id="@+id/textView6"
+                            android:id="@+id/textViewCompanyName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Company Name "
@@ -77,11 +77,11 @@
                             android:textSize="18dp"
                             android:layout_marginLeft="10dp"/>
 
-                        <TextView
+                        <!--<TextView
                             android:id="@+id/textViewCompanyName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="1244 NE 5th Ave City, State" />
+                            android:text="1244 NE 5th Ave City, State" />-->
 
 
 
