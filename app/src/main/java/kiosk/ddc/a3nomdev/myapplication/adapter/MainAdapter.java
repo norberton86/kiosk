@@ -12,18 +12,18 @@ import java.util.List;
 
 import kiosk.ddc.a3nomdev.myapplication.R;
 import kiosk.ddc.a3nomdev.myapplication.ResultActivity;
-import kiosk.ddc.a3nomdev.myapplication.model.Client;
+import kiosk.ddc.a3nomdev.myapplication.model.User;
 
 /**
  * Created by 3nomdev on 10/17/17.
  */
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder> {
-    private List<Client> data;
+    private List<User> data;
     private ResultActivity activity;
 
 
-    public MainAdapter(@NonNull List<Client> data, ResultActivity activity) {
+    public MainAdapter(@NonNull List<User> data, ResultActivity activity) {
         this.data = data;
         this.activity=activity;
     }
@@ -36,13 +36,13 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
 
     @Override
     public void onBindViewHolder(MainViewHolder holder, int position) {
-        final Client client = data.get(position);
-        holder.getTextViewName().setText(client.getName());
-        holder.getTextViewAddress().setText(client.getAddress());
+        final User user = data.get(position);
+        holder.getTextViewName().setText(user.getFirstName()+" "+user.getLastName());
+        holder.getTextViewAddress().setText(user.getAddress());
         holder.getButtonCheckIn().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                   activity.Show(client);
+                   activity.initFriends(user);
             }
         });
 

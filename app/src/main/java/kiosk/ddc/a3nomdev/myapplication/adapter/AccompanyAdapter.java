@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.TextView;
@@ -14,19 +13,18 @@ import java.util.List;
 
 import kiosk.ddc.a3nomdev.myapplication.R;
 import kiosk.ddc.a3nomdev.myapplication.ResultActivity;
-import kiosk.ddc.a3nomdev.myapplication.model.Accompany;
-import kiosk.ddc.a3nomdev.myapplication.model.Client;
+import kiosk.ddc.a3nomdev.myapplication.model.User;
 
 /**
  * Created by 3nomdev on 10/17/17.
  */
 
 public class AccompanyAdapter  extends RecyclerView.Adapter<AccompanyAdapter.MainViewHolder> {
-    private List<Accompany> data;
+    private List<User> data;
     private ResultActivity activity;
 
 
-    public AccompanyAdapter(@NonNull List<Accompany> data, ResultActivity activity) {
+    public AccompanyAdapter(@NonNull List<User> data, ResultActivity activity) {
         this.data = data;
         this.activity=activity;
     }
@@ -39,15 +37,16 @@ public class AccompanyAdapter  extends RecyclerView.Adapter<AccompanyAdapter.Mai
 
     @Override
     public void onBindViewHolder(AccompanyAdapter.MainViewHolder holder, int position) {
-        final Accompany accompany = data.get(position);
-        holder.getTextViewName().setText(accompany.getName());
+        final User accompany = data.get(position);
+        holder.getTextViewName().setText(accompany.getFirstName()+" "+accompany.getLastName());
+        holder.getTextViewTable().setText("Table - "+accompany.getTableNumber());
         holder.getCheckBoxStatus().setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-
+                  activity.ChangeState(accompany.getUserID(),b);
             }
         });
-
+        holder.getCheckBoxStatus().setChecked(accompany.getCheckIn());
 
     }
 
@@ -59,17 +58,23 @@ public class AccompanyAdapter  extends RecyclerView.Adapter<AccompanyAdapter.Mai
     class MainViewHolder extends RecyclerView.ViewHolder  {
         private CheckBox checkBoxStatus;
         private TextView textViewName;
+        private TextView textViewTable;
 
 
         public MainViewHolder(View itemView) {
             super(itemView);
 
             textViewName = (TextView) itemView.findViewById(R.id.textViewNameAccompany);
+            textViewTable = (TextView) itemView.findViewById(R.id.textViewNameAccompanyTable);
             checkBoxStatus=(CheckBox)itemView.findViewById(R.id.checkBoxStatus);
         }
 
         public TextView getTextViewName() {
             return textViewName;
+        }
+
+        public TextView getTextViewTable() {
+            return textViewTable;
         }
 
         public CheckBox getCheckBoxStatus() {

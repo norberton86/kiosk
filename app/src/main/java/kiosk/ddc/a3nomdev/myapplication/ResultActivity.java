@@ -1,6 +1,5 @@
 package kiosk.ddc.a3nomdev.myapplication;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,95 +8,131 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 
-import android.view.View;
-import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
 import kiosk.ddc.a3nomdev.myapplication.adapter.AccompanyAdapter;
 import kiosk.ddc.a3nomdev.myapplication.adapter.MainAdapter;
-import kiosk.ddc.a3nomdev.myapplication.model.Accompany;
-import kiosk.ddc.a3nomdev.myapplication.model.Client;
+import kiosk.ddc.a3nomdev.myapplication.model.User;
+import kiosk.ddc.a3nomdev.myapplication.model.UserCollection;
+import kiosk.ddc.a3nomdev.myapplication.service.ddcService;
+import rx.Observer;
 
 public class ResultActivity extends AppCompatActivity {
 
-    private List<Client> clients;
-    private List<Accompany> accompanies;
+    @InjectView(R.id.recyclerView) RecyclerView recyclerView;
+    @InjectView(R.id.recyclerViewAccompany) RecyclerView recyclerViewAccompany;
+    @InjectView(R.id.textViewTable) TextView textViewTable;
+    @InjectView(R.id.textViewMain) TextView textViewMain;
+
+
+    User userSelected;
+    List<User> friends;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+        ButterKnife.inject(this);
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
 
         actionBar.setDisplayHomeAsUpEnabled(true);
 
 
-        initClients();
+        Intent i = getIntent();
+        UserCollection uc = (UserCollection)i.getSerializableExtra("UserCollection");
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setAdapter(new MainAdapter(clients,this));
+
+        recyclerView.setAdapter(new MainAdapter(uc.getUsers(),this));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this,0));
 
-        initAccompanies();
+        friends=new ArrayList<User>();
 
-        RecyclerView recyclerViewAccompany = (RecyclerView) findViewById(R.id.recyclerViewAccompany);
-        recyclerViewAccompany.setAdapter(new AccompanyAdapter(accompanies,this));
-        recyclerViewAccompany.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewAccompany.addItemDecoration(new DividerItemDecoration(this,0));
+        initFriends(uc.getUsers().get(0));
 
-        Button login=(Button)findViewById(R.id.UserConfirm);
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ResultActivity.this, CheckInActivity.class);
-                startActivity(intent);
-            }
-        });
+
+
+
     }
 
-    public void Show(Client c)
+    @OnClick(R.id.UserConfirm)
+    void check() {
+        Intent intent = new Intent(ResultActivity.this, CheckInActivity.class);
+        UserCollection uc=new UserCollection();
+        uc.setUser(userSelected);
+        uc.setUsers(friends);
+        intent.putExtra("UserCollection",uc);
+        startActivity(intent);
+    }
+
+
+    @OnClick(R.id.buttonSelectAll)
+    void All() {
+
+        for(User u : friends)
+        {
+            u.setCheckIn(true);
+        }
+        recyclerViewAccompany.setAdapter(new AccompanyAdapter(friends,ResultActivity.this));
+        recyclerViewAccompany.setLayoutManager(new LinearLayoutManager(ResultActivity.this));
+        recyclerViewAccompany.addItemDecoration(new DividerItemDecoration(ResultActivity.this,0));
+    }
+
+
+
+    public void ChangeState(int id,boolean state)
     {
-        Toast.makeText(this,c.getName(),Toast.LENGTH_SHORT).show();
+        for(User f :  friends){
+            if(f.getUserID().equals(id))
+            {
+                f.setCheckIn(state);
+                break;
+            }
+        }
     }
 
-    private void initClients() {
-        clients = new ArrayList<Client>();
-
-        clients.add(new Client(1,"Smith Rick 1","4650 Same Place St"));
-        clients.add(new Client(1,"Smith Rick 2","4650 Same Place St"));
-        clients.add(new Client(1,"Smith Rick 3","4650 Same Place St"));
-        clients.add(new Client(1,"Smith Rick 4","4650 Same Place St"));
-        clients.add(new Client(1,"Smith Rick 5","4650 Same Place St"));
-        clients.add(new Client(1,"Smith Rick 6","4650 Same Place St"));
-        clients.add(new Client(1,"Smith Rick","4650 Same Place St"));
-        clients.add(new Client(1,"Smith Rick","4650 Same Place St"));
-        clients.add(new Client(1,"Smith Rick","4650 Same Place St"));
-        clients.add(new Client(1,"Smith Rick","4650 Same Place St"));
-        clients.add(new Client(1,"Smith Rick","4650 Same Place St"));
-        clients.add(new Client(1,"Smith Rick","4650 Same Place St"));
+    void setHeader(User u)
+    {
+        textViewTable.setText("Table - "+u.getTableNumber());
+        textViewMain.setText(u.getFirstName()+" "+u.getLastName());
     }
 
-    private void initAccompanies() {
-        accompanies = new ArrayList<Accompany>();
 
-        accompanies.add(new Accompany(false,"Willner, Jane"));
-        accompanies.add(new Accompany(false,"Willner, Jane"));
-        accompanies.add(new Accompany(false,"Willner, Jane"));
-        accompanies.add(new Accompany(false,"Willner, Jane"));
-        accompanies.add(new Accompany(false,"Willner, Jane"));
-        accompanies.add(new Accompany(false,"Willner, Jane"));
-        accompanies.add(new Accompany(false,"Willner, Jane"));
-        accompanies.add(new Accompany(false,"Willner, Jane"));
-        accompanies.add(new Accompany(false,"Willner, Jane"));
-        accompanies.add(new Accompany(false,"Willner, Jane"));
-        accompanies.add(new Accompany(false,"Willner, Jane"));
-        accompanies.add(new Accompany(false,"Willner, Jane"));
+    public void initFriends(User u) {
 
+        ddcService.GetFriends(u.getUserID(),u.getResevationId())
+                .subscribe(new Observer<List<User>>() {
+
+                               @Override
+                               public void onCompleted() {
+                               }
+
+                               @Override
+                               public void onError(Throwable e) {
+                                   Toast.makeText(ResultActivity.this, "Error trying to get Accompanies", Toast.LENGTH_SHORT).show();
+                               }
+
+                               @Override
+                               public void onNext(List<User> users) {
+                                   friends=users;
+                                   recyclerViewAccompany.setAdapter(new AccompanyAdapter(users,ResultActivity.this));
+                                   recyclerViewAccompany.setLayoutManager(new LinearLayoutManager(ResultActivity.this));
+                                   recyclerViewAccompany.addItemDecoration(new DividerItemDecoration(ResultActivity.this,0));
+
+                               }
+                           }
+                );
+        setHeader(u);
+        this.userSelected=u;
 
     }
 

@@ -2,7 +2,9 @@ package kiosk.ddc.a3nomdev.myapplication.endPoint;
 
 
 
-import kiosk.ddc.a3nomdev.myapplication.model.GitHub;
+import java.util.List;
+
+import kiosk.ddc.a3nomdev.myapplication.model.User;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
 import rx.Observable;
@@ -13,9 +15,12 @@ import rx.Observable;
 
 public interface ddcEndpoint {
 
-    String SERVICE_ENDPOINT = "https://api.github.com/";
+    String SERVICE_ENDPOINT = "http://162.251.239.119/api/myUser/";
 
-    @GET("users/{username}")
-    Observable<GitHub> getUserData(@Path("username") String username);
+    @GET("{search}/{type}")
+    Observable<List<User>> Get(@Path("search") String search, @Path("type") String type);
+
+    @GET("friends/{id}/{reservationId}")
+    Observable<List<User>> GetFriends(@Path("id") int id, @Path("reservationId") int reservationId);
 
 }
