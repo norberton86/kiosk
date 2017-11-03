@@ -2,6 +2,7 @@
     <string name="app_name">DDC</string>
     <string name="activity_search">Welcome</string>
     <string name="activity_results">Results</string>
+    <string name="activity_settings">Settings</string>
     <string name="activity_check">Check-in Complete</string>
     <string name="activity_results_confirm">Confirm</string>
     <string name="activity_results_accomponay">Accompany by</string>
@@ -12,4 +13,8 @@
     <string name="fa_icon_check_circle">&#xf058;</string>
     <string name="activity_search_button_scan">SCAN INVITATION</string>
     <string name="activity_search_user_login">SIGN IN</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_Login_fragment">Hello Login Fragment</string>
+    <string name="hello_setting_fragment">Hello Setting Fragment</string>
 </resources>
