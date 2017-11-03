@@ -55,7 +55,7 @@ public class CheckInActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 // app icon in action bar clicked; goto parent activity.
-                this.finish();
+                startActivity(new Intent(CheckInActivity.this, MainActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
