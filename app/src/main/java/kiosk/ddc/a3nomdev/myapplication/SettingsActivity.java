@@ -30,10 +30,9 @@ public class SettingsActivity extends AppCompatActivity implements LoginFragment
 
     private void Transaction(Fragment dest)
     {
-        FragmentTransaction fragmentTransaction = fragmentManager
-                .beginTransaction();
 
-
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
         fragmentTransaction.replace(android.R.id.content, dest).commit();
     }
 
@@ -51,7 +50,6 @@ public class SettingsActivity extends AppCompatActivity implements LoginFragment
 
     @Override
     public void onSucces() {
-
       Transaction(new SettingFragment());
     }
 }
