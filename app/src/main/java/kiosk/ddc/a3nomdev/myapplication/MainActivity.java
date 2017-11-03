@@ -93,9 +93,12 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.scanImage)
     void scanClick() {
+
         Intent intent = new Intent(MainActivity.this, ScanActivity.class);
         startActivity(intent);
     }
+
+
 
     @OnClick(R.id.UserLogin)
     void userClick() {
@@ -129,13 +132,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void CallWebService() {
 
-        String data;
+        final String data;
         if(loginType.equalsIgnoreCase("company"))
         data=editTextCompany.getText().toString();
         else
         data=editTextName.getText().toString();
 
-        ddcService.Get(data,"name")
+        ddcService.Get(data,loginType)
                 .subscribe(new Observer<List<User>>() {
 
                                @Override
@@ -150,16 +153,24 @@ public class MainActivity extends AppCompatActivity {
                                @Override
                                public void onNext(List<User> u) {
 
-                                   UserCollection uc= new UserCollection();
+                                   if(u.size()>0)
+                                   {
+                                       UserCollection uc= new UserCollection();
 
-                                   User user=new User();
-                                   user.setCompanyName(u.get(0).getCompanyName());
+                                       User user=new User();
+                                       user.setCompanyName(u.get(0).getCompanyName());
 
-                                   uc.setUser(user);
-                                   uc.setUsers(u);
+                                       uc.setUser(user);
+                                       uc.setUsers(u);
 
 
-                                   goResults(uc);
+                                       goResults(uc);
+                                   }
+                                   else
+                                   {
+                                       Toast.makeText(MainActivity.this, "Record not found, please see a staff member", Toast.LENGTH_SHORT).show();
+                                   }
+
                                }
                            }
                 );

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 
 import android.widget.TextView;
@@ -68,6 +69,19 @@ public class ResultActivity extends AppCompatActivity {
 
 
     }
+
+/*    String barcode;
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent e) {
+        char pressedKey = (char) e.getUnicodeChar();
+        barcode += pressedKey;
+        if (e.getCharacters().indexOf(13)>=0) {
+            Toast.makeText(getApplicationContext(), "barcode--->>>" + barcode, Toast.LENGTH_LONG)
+                    .show();
+        }
+
+        return super.dispatchKeyEvent(e);
+    }*/
 
     ArrayList<Integer> getIds()
     {
