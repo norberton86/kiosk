@@ -10,14 +10,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import kiosk.ddc.a3nomdev.myapplication.adapter.AccompanyAdapter;
 import kiosk.ddc.a3nomdev.myapplication.adapter.FinalAdapter;
 import kiosk.ddc.a3nomdev.myapplication.model.UserCollection;
+import kiosk.ddc.a3nomdev.myapplication.util.FontManager;
 
 public class CheckInActivity extends AppCompatActivity {
 

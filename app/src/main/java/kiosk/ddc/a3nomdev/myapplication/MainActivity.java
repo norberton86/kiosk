@@ -22,6 +22,7 @@ import butterknife.OnFocusChange;
 import kiosk.ddc.a3nomdev.myapplication.model.User;
 import kiosk.ddc.a3nomdev.myapplication.model.UserCollection;
 import kiosk.ddc.a3nomdev.myapplication.service.ddcService;
+import kiosk.ddc.a3nomdev.myapplication.util.FontManager;
 import rx.Observer;
 
 

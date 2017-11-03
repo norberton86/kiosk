@@ -1,4 +1,4 @@
-package kiosk.ddc.a3nomdev.myapplication;
+package kiosk.ddc.a3nomdev.myapplication.util;
 
 import android.content.Context;
 import android.graphics.Typeface;
