@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +34,8 @@ public class ResultActivity extends AppCompatActivity {
     @InjectView(R.id.textViewTable) TextView textViewTable;
     @InjectView(R.id.textViewMain) TextView textViewMain;
     @InjectView(R.id.textViewCompanyName) TextView textViewCompanyName;
+    @InjectView(R.id.UserConfirm) Button UserConfirm;
+
 
     User userSelected;
     List<User> friends;
@@ -102,7 +105,8 @@ public class ResultActivity extends AppCompatActivity {
     @OnClick(R.id.UserConfirm)
     void check() {
 
-
+        UserConfirm.setEnabled(false);
+        UserConfirm.setText("Checking...");
         ddcService.Post(userSelected.getResevationId(),getIds())
                 .subscribe(new Observer<String>() {
 
@@ -112,11 +116,14 @@ public class ResultActivity extends AppCompatActivity {
 
                                @Override
                                public void onError(Throwable e) {
+                                   EnableButton();
                                    Toast.makeText(ResultActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                                }
 
                                @Override
                                public void onNext(String result) {
+
+                                   EnableButton();
 
                                    if(result.equalsIgnoreCase("Done"))
                                    {
@@ -137,6 +144,12 @@ public class ResultActivity extends AppCompatActivity {
 
     }
 
+
+    void EnableButton()
+    {
+        UserConfirm.setEnabled(true);
+        UserConfirm.setText("Confirm");
+    }
 
     @OnClick(R.id.buttonSelectAll)
     void All() {
