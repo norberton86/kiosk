@@ -8,6 +8,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     @InjectView(R.id.editTextName) EditText editTextName;
     @InjectView(R.id.editTextCompany) EditText editTextCompany;
+    @InjectView(R.id.UserLogin) Button UserLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,6 +141,9 @@ public class MainActivity extends AppCompatActivity {
         else
         data=editTextName.getText().toString();
 
+        UserLogin.setEnabled(false);
+        UserLogin.setText("Searching...");
+
         ddcService.Get(data,loginType)
                 .subscribe(new Observer<List<User>>() {
 
@@ -148,11 +153,14 @@ public class MainActivity extends AppCompatActivity {
 
                                @Override
                                public void onError(Throwable e) {
+                                   EnableButton();
                                    Toast.makeText(MainActivity.this, "Error trying to login", Toast.LENGTH_SHORT).show();
                                }
 
                                @Override
                                public void onNext(List<User> u) {
+
+                                   EnableButton();
 
                                    if(u.size()>0)
                                    {
@@ -194,13 +202,18 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.settings)
         {
-            Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-            startActivity(intent);
+            /*Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+            startActivity(intent);*/
             return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+    void EnableButton()
+    {
+        UserLogin.setEnabled(true);
+        UserLogin.setText("SIGN IN");
+    }
 
 }

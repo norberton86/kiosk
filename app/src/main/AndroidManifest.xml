@@ -19,7 +19,7 @@
             android:launchMode="singleTask"
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label=""
+            android:label="DDC"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
