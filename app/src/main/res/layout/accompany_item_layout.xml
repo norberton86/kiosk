@@ -21,7 +21,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.45"
-        android:text="Willner Stacy" />
+        android:text="Willner Stacy"
+        android:textSize="24dp"/>
 
     <TextView
 
@@ -29,6 +30,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.45"
-        android:text="Table - 3" />
+        android:text="Table - 3"
+        android:textSize="24dp"/>
 
 </LinearLayout>
