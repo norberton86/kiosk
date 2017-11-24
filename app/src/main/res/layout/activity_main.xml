@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-
-
+        android:layout_height="match_parent">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
 
             <ImageView
@@ -28,9 +28,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:gravity="center"
+                android:text="Welcome to the MYRCB 110th Dinner"
                 android:textSize="25dp"
-                android:textStyle="bold"
-                android:text="Welcome to the MYRCB 110th Dinner" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textViewRecomendation"
@@ -66,7 +66,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:text="or"
-                    android:textStyle="italic"/>
+                    android:textStyle="italic" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -75,8 +75,8 @@
                     android:layout_weight="2"
                     android:gravity="center"
                     android:text="Scan"
-                    android:textStyle="bold"
-                    android:textSize="20dp"/>
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -100,12 +100,12 @@
                         style="@style/Widget.AppCompat.EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:ems="10"
                         android:hint="First Name"
                         android:inputType="textPersonName"
-                        android:theme="@style/UserName.EditText"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginLeft="15dp"/>
+                        android:theme="@style/UserName.EditText" />
 
                     <TextView
                         android:id="@+id/textView2"
@@ -119,21 +119,21 @@
                         style="@style/Widget.AppCompat.EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
                         android:ems="10"
                         android:hint="Last Name"
                         android:inputType="textPersonName"
-                        android:theme="@style/UserName.EditText"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginLeft="15dp"/>
+                        android:theme="@style/UserName.EditText" />
 
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center_horizontal"
-                        android:orientation="horizontal"
+                        android:layout_marginLeft="50dp"
                         android:layout_marginRight="50dp"
-                        android:layout_marginLeft="50dp">
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
 
 
                         <Button
@@ -157,33 +157,33 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <View
                         android:layout_width="2dp"
                         android:layout_height="fill_parent"
-                        android:background="#FFD4D2D2"
+                        android:layout_marginBottom="5dp"
                         android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"/>
+                        android:background="#FFD4D2D2" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/mio"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="2"
-                    android:orientation="vertical"
-                    android:id="@+id/mio">
+                    android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/scanImage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textSize="200sp"
-                        android:textColor="#000"
                         android:text="@string/fa_icon_qrcode"
-                        android:id="@+id/scanImage"/>
+                        android:textColor="#000"
+                        android:textSize="200sp" />
 
                     <!--<LinearLayout
                         android:layout_width="match_parent"
@@ -212,7 +212,25 @@
             </LinearLayout>
 
 
-
-
         </LinearLayout>
-</ScrollView>
+
+
+    </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/progressBarHolderMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.4"
+        android:animateLayoutChanges="true"
+        android:background="#000000"
+        android:visibility="gone">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true" />
+    </FrameLayout>
+</RelativeLayout>

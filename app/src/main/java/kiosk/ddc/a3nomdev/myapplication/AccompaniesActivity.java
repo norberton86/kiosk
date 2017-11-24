@@ -7,7 +7,10 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +36,12 @@ public class AccompaniesActivity extends AppCompatActivity {
 
     boolean all=false;
 
+
+    AlphaAnimation inAnimation;
+    AlphaAnimation outAnimation;
+
+    FrameLayout progressBarHolder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +57,9 @@ public class AccompaniesActivity extends AppCompatActivity {
         Intent i = getIntent();
         userSelected = (User)i.getSerializableExtra("User");
         userSelected.setAttended(true);
+
+        progressBarHolder = (FrameLayout) findViewById(R.id.progressBarHolder);
+
         initFriends(userSelected);
     }
 
@@ -91,7 +103,17 @@ public class AccompaniesActivity extends AppCompatActivity {
     }
 
 
+    void ShowLoading()
+    {
+        inAnimation = new AlphaAnimation(0f, 1f);
+        inAnimation.setDuration(200);
+        progressBarHolder.setAnimation(inAnimation);
+        progressBarHolder.setVisibility(View.VISIBLE);
+    }
+
     public void initFriends(User u) {
+
+        ShowLoading();
 
         ddcService.GetFriends(u.getPersonID(),u.getFamilyId())
                 .subscribe(new Observer<List<User>>() {
@@ -102,11 +124,14 @@ public class AccompaniesActivity extends AppCompatActivity {
 
                                @Override
                                public void onError(Throwable e) {
+                                   HideLoading();
                                    Toast.makeText(AccompaniesActivity.this, "Error trying to get Accompanies", Toast.LENGTH_SHORT).show();
                                }
 
                                @Override
                                public void onNext(List<User> users) {
+
+                                   HideLoading();
 
                                    users.add(0,userSelected);
                                    friends=users;
@@ -126,6 +151,9 @@ public class AccompaniesActivity extends AppCompatActivity {
 
         UserConfirm.setEnabled(false);
         UserConfirm.setText("Checking...");
+
+        ShowLoading();
+
         ddcService.Post(Integer.parseInt(userSelected.getReservationId()) ,getIds())
                 .subscribe(new Observer<String>() {
 
@@ -135,6 +163,7 @@ public class AccompaniesActivity extends AppCompatActivity {
 
                                @Override
                                public void onError(Throwable e) {
+                                   HideLoading();
                                    EnableButton();
                                    Toast.makeText(AccompaniesActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                                }
@@ -147,6 +176,7 @@ public class AccompaniesActivity extends AppCompatActivity {
                                    if(result.equalsIgnoreCase("Done"))
                                    {
 
+                                       HideLoading();
                                        Intent intent = new Intent(AccompaniesActivity.this, CheckInActivity.class);
                                        UserCollection uc = new UserCollection();
                                        uc.setUser(userSelected);
@@ -182,5 +212,12 @@ public class AccompaniesActivity extends AppCompatActivity {
         }
     }
 
+    void HideLoading()
+    {
+        outAnimation = new AlphaAnimation(1f, 0f);
+        outAnimation.setDuration(200);
+        progressBarHolder.setAnimation(outAnimation);
+        progressBarHolder.setVisibility(View.GONE);
+    }
 
 }

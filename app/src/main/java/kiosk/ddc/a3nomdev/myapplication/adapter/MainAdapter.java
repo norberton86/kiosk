@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.List;
@@ -58,11 +59,13 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
         private TextView textViewName;
         private TextView textViewAddress;
 
+
         public MainViewHolder(View itemView) {
             super(itemView);
             buttonCheckIn = (Button)itemView.findViewById(R.id.buttonCheckIn);
             textViewName = (TextView) itemView.findViewById(R.id.textViewName);
             textViewAddress = (TextView) itemView.findViewById(R.id.textViewAddress);
+
         }
 
         public TextView getTextViewName() {
@@ -76,6 +79,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
         public Button getButtonCheckIn() {
             return buttonCheckIn;
         }
+
+
 
 
     }

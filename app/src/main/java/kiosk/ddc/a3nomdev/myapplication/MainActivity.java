@@ -9,9 +9,12 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
     @InjectView(R.id.editTextLastName) EditText editTextLastName;
     @InjectView(R.id.UserLogin) Button UserLogin;
 
+    AlphaAnimation inAnimation;
+    AlphaAnimation outAnimation;
+
+    FrameLayout progressBarHolder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
 
         /*Drawable d=getResources().getDrawable(R.drawable.banner);
         getSupportActionBar().setBackgroundDrawable(d);*/
+
+        progressBarHolder = (FrameLayout) findViewById(R.id.progressBarHolderMain);
 
         editTextFirstName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -136,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
         UserLogin.setEnabled(false);
         UserLogin.setText("Searching...");
 
+        ShowLoading();
 
         ddcService.Get(data,loginType)
                 .subscribe(new Observer<List<User>>() {
@@ -146,12 +157,14 @@ public class MainActivity extends AppCompatActivity {
 
                                @Override
                                public void onError(Throwable e) {
+                                   HideLoading();
                                    EnableButton();
                                    Toast.makeText(MainActivity.this, "Error trying to login", Toast.LENGTH_SHORT).show();
                                }
 
                                @Override
                                public void onNext(List<User> u) {
+                                   HideLoading();
 
                                    EnableButton();
 
@@ -205,5 +218,22 @@ public class MainActivity extends AppCompatActivity {
         UserLogin.setText("SEARCH");
 
     }
+
+    void HideLoading()
+    {
+        outAnimation = new AlphaAnimation(1f, 0f);
+        outAnimation.setDuration(200);
+        progressBarHolder.setAnimation(outAnimation);
+        progressBarHolder.setVisibility(View.GONE);
+    }
+
+    void ShowLoading()
+    {
+        inAnimation = new AlphaAnimation(0f, 1f);
+        inAnimation.setDuration(200);
+        progressBarHolder.setAnimation(inAnimation);
+        progressBarHolder.setVisibility(View.VISIBLE);
+    }
+
 
 }
