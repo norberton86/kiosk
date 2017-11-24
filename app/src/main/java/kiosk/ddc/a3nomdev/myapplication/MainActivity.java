@@ -1,5 +1,6 @@
 package kiosk.ddc.a3nomdev.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
@@ -121,6 +123,13 @@ public class MainActivity extends AppCompatActivity {
 
     void navAndGo()
     {
+        if(this.getCurrentFocus()!=null)  //this block is to hide the keyboard
+        {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(this.getCurrentFocus().getWindowToken(), 0);
+        }
+
+
 
         if(loginType.equalsIgnoreCase("name")&&editTextFirstName.getText().toString().equalsIgnoreCase("")&&editTextLastName.getText().toString().equalsIgnoreCase(""))
         {
