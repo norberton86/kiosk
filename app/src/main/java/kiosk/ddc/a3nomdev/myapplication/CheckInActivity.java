@@ -19,8 +19,7 @@ import kiosk.ddc.a3nomdev.myapplication.util.FontManager;
 public class CheckInActivity extends AppCompatActivity {
 
 
-    @InjectView(R.id.textViewMainFinal) TextView textViewMainFinal;
-    @InjectView(R.id.textViewTableMainFinal) TextView textViewTableMainFinal;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +37,6 @@ public class CheckInActivity extends AppCompatActivity {
         Intent i = getIntent();
         UserCollection uc = (UserCollection)i.getSerializableExtra("UserCollection");
         uc.setUsers(uc.Chossed());
-
-
-        textViewMainFinal.setText(uc.getUser().getFirstName()+" "+uc.getUser().getLastName());
-        textViewTableMainFinal.setText("Table - "+uc.getUser().getTableNumber());
 
 
         RecyclerView recyclerViewAccompany = (RecyclerView) findViewById(R.id.recyclerViewFinals);

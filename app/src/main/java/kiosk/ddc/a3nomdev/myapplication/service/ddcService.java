@@ -51,10 +51,10 @@ public class ddcService {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
-    public static Observable<List<User>> GetFriends(int id, int reservationId)
+    public static Observable<List<User>> GetFriends(int id, int familyId)
     {
         Create();
-        return  ddcEndPoint.GetFriends(id,reservationId)
+        return  ddcEndPoint.GetFriends(id,familyId)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread());
     }

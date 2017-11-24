@@ -8,9 +8,6 @@
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
 
-    <style name="Scan.Button" parent="ThemeOverlay.AppCompat">
-        <item name="colorAccent">@color/colorScan</item>
-    </style>
 
     <style name="UserName.EditText" parent="ThemeOverlay.AppCompat">
         <item name="colorAccent">@color/colorPrimary</item>

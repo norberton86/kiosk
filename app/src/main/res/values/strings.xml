@@ -12,7 +12,7 @@
     <string name="fa_icon_qrcode">&#xf029;</string>
     <string name="fa_icon_check_circle">&#xf058;</string>
     <string name="activity_search_button_scan">SCAN INVITATION</string>
-    <string name="activity_search_user_login">SIGN IN</string>
+    <string name="activity_search_user_login">SEARCH</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_Login_fragment">Hello Login Fragment</string>

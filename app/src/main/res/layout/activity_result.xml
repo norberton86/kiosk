@@ -30,18 +30,6 @@
                 android:textStyle="bold"
                 android:text="Results" />
 
-            <TextView
-                android:id="@+id/textViewResultDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:gravity="center"
-                android:text="@string/activity_result_reservation" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:weightSum="1" android:orientation="vertical">
 
                 <LinearLayout
                 android:layout_width="match_parent"
@@ -50,15 +38,15 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal"
-                android:weightSum="1">
+                >
 
                 <LinearLayout
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.7"
                     android:orientation="vertical"
                     android:background="@drawable/border"
-                    android:layout_marginRight="5dp">
+                    android:layout_marginBottom="10dp"
+                    >
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -77,14 +65,6 @@
                             android:textSize="18dp"
                             android:layout_marginLeft="10dp"/>
 
-                        <!--<TextView
-                            android:id="@+id/textViewCompanyName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="1244 NE 5th Ave City, State" />-->
-
-
-
                     </LinearLayout>
 
                     <android.support.v7.widget.RecyclerView
@@ -97,120 +77,8 @@
                 </LinearLayout>
 
 
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_weight="0.3"
-                    android:background="@drawable/border"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:id="@+id/textViewMain"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:text="Willner, Yaakov " />
-
-                        <View
-                            android:layout_width="1px"
-                            android:layout_height="fill_parent"
-                            android:layout_marginBottom="7dp"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:layout_marginTop="7dp"
-                            android:background="#FFD4D2D2" />
-
-                        <TextView
-                            android:id="@+id/textViewTable"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Table - 49" />
-
-
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="1px"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:background="#FFD4D2D2" />
-
-
-                    <TextView
-                        android:id="@+id/textView7"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/activity_results_accomponay"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:weightSum="1"
-                        android:orientation="vertical"
-                        android:layout_marginTop="5dp">
-
-                        <android.support.v7.widget.RecyclerView
-                            android:id="@+id/recyclerViewAccompany"
-                            android:layout_weight="0.85"
-                            android:layout_height="0dp"
-                            android:scrollbars="vertical"
-                            android:layout_width="match_parent"/>
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="0.05"/>
-
-                        <Button
-                            android:layout_marginBottom="10dp"
-                            android:id="@+id/buttonSelectAll"
-                            style="@style/Widget.AppCompat.Button.Colored"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_marginLeft="30dp"
-                            android:layout_marginRight="30dp"
-                            android:layout_weight="0.1"
-                            android:text="SELECT ALL"
-                            android:textColor="#FFFF"
-                            android:theme="@style/User.Button" />
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
             </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.05"/>
-
-                <Button
-                    android:id="@+id/UserConfirm"
-                    style="@style/Widget.AppCompat.Button.Colored"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.1"
-                    android:text="@string/activity_results_confirm"
-                    android:textColor="#FFFF"
-                    android:theme="@style/User.Button"
-                    android:layout_marginLeft="350dp"
-                    android:layout_marginRight="350dp"
-                    android:layout_marginBottom="15dp"/>
-
-            </LinearLayout>
         </LinearLayout>
 
 </RelativeLayout>

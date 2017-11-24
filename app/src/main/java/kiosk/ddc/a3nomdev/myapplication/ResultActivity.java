@@ -30,16 +30,7 @@ import rx.Observer;
 public class ResultActivity extends AppCompatActivity {
 
     @InjectView(R.id.recyclerView) RecyclerView recyclerView;
-    @InjectView(R.id.recyclerViewAccompany) RecyclerView recyclerViewAccompany;
-    @InjectView(R.id.textViewTable) TextView textViewTable;
-    @InjectView(R.id.textViewMain) TextView textViewMain;
     @InjectView(R.id.textViewCompanyName) TextView textViewCompanyName;
-    @InjectView(R.id.UserConfirm) Button UserConfirm;
-
-
-    User userSelected;
-    List<User> friends;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,161 +46,19 @@ public class ResultActivity extends AppCompatActivity {
         Intent i = getIntent();
         UserCollection uc = (UserCollection)i.getSerializableExtra("UserCollection");
 
-        if(uc.getLoginType().equalsIgnoreCase("company"))
-        textViewCompanyName.setText(uc.getUser().getCompanyName());
-        else
-            textViewCompanyName.setText("Results");
+
+        textViewCompanyName.setText("Results");
 
         recyclerView.setAdapter(new MainAdapter(uc.getUsers(),this));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this,0));
-
-        friends=new ArrayList<User>();
-
-        initFriends(uc.getUsers().get(0));
-
-
-
-
     }
 
-/*    String barcode;
-    @Override
-    public boolean dispatchKeyEvent(KeyEvent e) {
-        char pressedKey = (char) e.getUnicodeChar();
-        barcode += pressedKey;
-        if (e.getCharacters().indexOf(13)>=0) {
-            Toast.makeText(getApplicationContext(), "barcode--->>>" + barcode, Toast.LENGTH_LONG)
-                    .show();
-        }
-
-        return super.dispatchKeyEvent(e);
-    }*/
-
-    ArrayList<Integer> getIds()
+    public void goFriends(User user)
     {
-        ArrayList<Integer> result=new ArrayList<Integer>();
-        for(User u: friends)  //collect all selected ids
-        {
-            if(u.getCheckIn())
-            {
-                result.add(u.getUserID());
-            }
-        }
-
-        result.add(userSelected.getUserID());
-
-        return result;
-    }
-
-    @OnClick(R.id.UserConfirm)
-    void check() {
-
-        UserConfirm.setEnabled(false);
-        UserConfirm.setText("Checking...");
-        ddcService.Post(userSelected.getResevationId(),getIds())
-                .subscribe(new Observer<String>() {
-
-                               @Override
-                               public void onCompleted() {
-                               }
-
-                               @Override
-                               public void onError(Throwable e) {
-                                   EnableButton();
-                                   Toast.makeText(ResultActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                               }
-
-                               @Override
-                               public void onNext(String result) {
-
-                                   EnableButton();
-
-                                   if(result.equalsIgnoreCase("Done"))
-                                   {
-                                       Intent intent = new Intent(ResultActivity.this, CheckInActivity.class);
-                                       UserCollection uc = new UserCollection();
-                                       uc.setUser(userSelected);
-                                       uc.setUsers(friends);
-                                       intent.putExtra("UserCollection", uc);
-                                       startActivity(intent);
-                                   }
-
-                               }
-                           }
-                );
-
-
-
-
-    }
-
-
-    void EnableButton()
-    {
-        UserConfirm.setEnabled(true);
-        UserConfirm.setText("Confirm");
-    }
-
-    @OnClick(R.id.buttonSelectAll)
-    void All() {
-
-        for(User u : friends)
-        {
-            u.setCheckIn(true);
-        }
-        recyclerViewAccompany.setAdapter(new AccompanyAdapter(friends,ResultActivity.this));
-        recyclerViewAccompany.setLayoutManager(new LinearLayoutManager(ResultActivity.this));
-        recyclerViewAccompany.addItemDecoration(new DividerItemDecoration(ResultActivity.this,0));
-    }
-
-
-
-    public void ChangeState(int id,boolean state)
-    {
-        for(User f :  friends){
-            if(f.getUserID().equals(id))
-            {
-                f.setCheckIn(state);
-                break;
-            }
-        }
-    }
-
-    void setHeader(User u)
-    {
-        textViewTable.setText("Table - "+u.getTableNumber());
-        textViewMain.setText(u.getFirstName()+" "+u.getLastName());
-    }
-
-
-    public void initFriends(User u) {
-
-        ddcService.GetFriends(u.getUserID(),u.getResevationId())
-                .subscribe(new Observer<List<User>>() {
-
-                               @Override
-                               public void onCompleted() {
-                               }
-
-                               @Override
-                               public void onError(Throwable e) {
-                                   Toast.makeText(ResultActivity.this, "Error trying to get Accompanies", Toast.LENGTH_SHORT).show();
-                               }
-
-                               @Override
-                               public void onNext(List<User> users) {
-                                   friends=users;
-                                   recyclerViewAccompany.setAdapter(new AccompanyAdapter(users,ResultActivity.this));
-                                   recyclerViewAccompany.setLayoutManager(new LinearLayoutManager(ResultActivity.this));
-                                   recyclerViewAccompany.addItemDecoration(new DividerItemDecoration(ResultActivity.this,0));
-
-                               }
-                           }
-                );
-        setHeader(u);
-        this.userSelected=u;
-
+        Intent intent = new Intent(ResultActivity.this, AccompaniesActivity.class);
+        intent.putExtra("User", user);
+        startActivity(intent);
     }
 
     @Override
@@ -223,6 +72,5 @@ public class ResultActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
-
 
 }

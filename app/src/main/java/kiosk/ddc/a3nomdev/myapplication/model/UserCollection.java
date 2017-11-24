@@ -43,7 +43,8 @@ public class UserCollection implements Serializable {
 
         for(User u: users)
         {
-            result.add(u.getFirstName()+" , "+u.getLastName()+ "  Table - "+u.getTableNumber());
+            String table=u.getTable()==-1?"N/A":u.getTable().toString();
+            result.add(u.getFirstName()+" , "+u.getLastName()+ "  Table - "+table);
         }
         return result;
     }
@@ -53,7 +54,7 @@ public class UserCollection implements Serializable {
         List<User> results=new ArrayList<User>();
         for(User u: users)
         {
-            if(u.getCheckIn())
+            if(u.getAttended())
             results.add(u);
         }
         return  results;

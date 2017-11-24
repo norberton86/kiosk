@@ -11,46 +11,75 @@ import java.io.Serializable;
 
 public class User implements Serializable{
 
-    @SerializedName("firstName")
+    @SerializedName("reservationId")
     @Expose
-    private String firstName;
+    private String reservationId;
+    @SerializedName("reservationCount")
+    @Expose
+    private Integer reservationCount;
+    @SerializedName("tableType")
+    @Expose
+    private String tableType;
+    @SerializedName("table")
+    @Expose
+    private Integer table;
+    @SerializedName("attended")
+    @Expose
+    private Boolean attended;
     @SerializedName("lastName")
     @Expose
     private String lastName;
-    @SerializedName("userID")
+    @SerializedName("firstName")
     @Expose
-    private Integer userID;
-    @SerializedName("companyName")
+    private String firstName;
+    @SerializedName("title")
     @Expose
-    private String companyName;
-    @SerializedName("companyID")
+    private String title;
+    @SerializedName("familyId")
     @Expose
-    private Integer companyID;
-    @SerializedName("scan")
+    private Integer familyId;
+    @SerializedName("personID")
     @Expose
-    private String scan;
-    @SerializedName("checkIn")
-    @Expose
-    private Boolean checkIn;
-    @SerializedName("guestAmount")
-    @Expose
-    private Integer guestAmount;
-    @SerializedName("address")
-    @Expose
-    private String address;
-    @SerializedName("resevationId")
-    @Expose
-    private Integer resevationId;
-    @SerializedName("tableNumber")
-    @Expose
-    private Integer tableNumber;
+    private Integer personID;
 
-    public String getFirstName() {
-        return firstName;
+    public String getReservationId() {
+        return reservationId;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setReservationId(String reservationId) {
+        this.reservationId = reservationId;
+    }
+
+    public Integer getReservationCount() {
+        return reservationCount;
+    }
+
+    public void setReservationCount(Integer reservationCount) {
+        this.reservationCount = reservationCount;
+    }
+
+    public String getTableType() {
+        return tableType;
+    }
+
+    public void setTableType(String tableType) {
+        this.tableType = tableType;
+    }
+
+    public Integer getTable() {
+        return table;
+    }
+
+    public void setTable(Integer table) {
+        this.table = table;
+    }
+
+    public Boolean getAttended() {
+        return attended;
+    }
+
+    public void setAttended(Boolean attended) {
+        this.attended = attended;
     }
 
     public String getLastName() {
@@ -61,76 +90,35 @@ public class User implements Serializable{
         this.lastName = lastName;
     }
 
-    public Integer getUserID() {
-        return userID;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setUserID(Integer userID) {
-        this.userID = userID;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public Integer getCompanyID() {
-        return companyID;
+    public Integer getFamilyId() {
+        return familyId;
     }
 
-    public void setCompanyID(Integer companyID) {
-        this.companyID = companyID;
+    public void setFamilyId(Integer familyId) {
+        this.familyId = familyId;
     }
 
-    public String getScan() {
-        return scan;
+    public Integer getPersonID() {
+        return personID;
     }
 
-    public void setScan(String scan) {
-        this.scan = scan;
+    public void setPersonID(Integer personID) {
+        this.personID = personID;
     }
-
-    public Boolean getCheckIn() {
-        return checkIn;
-    }
-
-    public void setCheckIn(Boolean checkIn) {
-        this.checkIn = checkIn;
-    }
-
-    public Integer getGuestAmount() {
-        return guestAmount;
-    }
-
-    public void setGuestAmount(Integer guestAmount) {
-        this.guestAmount = guestAmount;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public Integer getResevationId() {
-        return resevationId;
-    }
-
-    public void setResevationId(Integer resevationId) {
-        this.resevationId = resevationId;
-    }
-
-    public Integer getTableNumber() {
-        return tableNumber;
-    }
-
-    public void setTableNumber(Integer tableNumber) {
-        this.tableNumber = tableNumber;
-    }
-
 }

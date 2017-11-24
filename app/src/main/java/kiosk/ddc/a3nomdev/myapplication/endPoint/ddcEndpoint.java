@@ -22,13 +22,13 @@ import rx.Observable;
 
 public interface ddcEndpoint {
 
-    String SERVICE_ENDPOINT = "http://162.251.239.119/api/myUser/";
+    String SERVICE_ENDPOINT = "http://ddc2.3nom.com/api/Guest/";
 
     @GET("{search}/{type}")
     Observable<List<User>> Get(@Path("search") String search, @Path("type") String type);
 
-    @GET("friends/{id}/{reservationId}")
-    Observable<List<User>> GetFriends(@Path("id") int id, @Path("reservationId") int reservationId);
+    @GET("friends/{id}/{familyId}")
+    Observable<List<User>> GetFriends(@Path("id") int id, @Path("familyId") int familyId);
 
     @POST("{reservationId}")
     Observable<String> Post( @Path("reservationId") int reservationId,@Body List<Integer> value);

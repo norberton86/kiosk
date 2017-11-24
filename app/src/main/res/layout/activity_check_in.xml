@@ -48,51 +48,6 @@
                     android:layout_marginRight="15dp"
                     android:background="#FFD4D2D2" />
 
-                <TextView
-                    android:id="@+id/textViewMainFinal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Yaakov Willner"
-                    android:textStyle="bold"
-                    android:textSize="25sp"
-                    android:gravity="center"
-                    android:layout_marginTop="5dp"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="3" android:gravity="center">
-
-
-
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:id="@+id/textViewTableMainFinal"
-                        android:background="#000"
-                        android:textSize="18sp"
-                        android:text="Table - 49"
-                        android:textColor="#fff"
-                        android:gravity="center"
-                        />
-
-
-
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/textViewAccompanyFinal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/activity_results_accomponay"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center"/>
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

@@ -55,9 +55,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
                     android:gravity="center"
-                    android:text="Login"
-                    android:textStyle="bold"
-                    android:textSize="20dp"/>
+                    android:text="Search"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView3"
@@ -96,12 +96,12 @@
 
 
                     <EditText
-                        android:id="@+id/editTextName"
+                        android:id="@+id/editTextFirstName"
                         style="@style/Widget.AppCompat.EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="Last Name, First Name"
+                        android:hint="First Name"
                         android:inputType="textPersonName"
                         android:theme="@style/UserName.EditText"
                         android:layout_marginRight="15dp"
@@ -115,12 +115,12 @@
                         android:text="or" />
 
                     <EditText
-                        android:id="@+id/editTextCompany"
+                        android:id="@+id/editTextLastName"
                         style="@style/Widget.AppCompat.EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:ems="10"
-                        android:hint="Company Name"
+                        android:hint="Last Name"
                         android:inputType="textPersonName"
                         android:theme="@style/UserName.EditText"
                         android:layout_marginRight="15dp"

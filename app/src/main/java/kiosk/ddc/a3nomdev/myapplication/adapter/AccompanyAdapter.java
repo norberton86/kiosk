@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import kiosk.ddc.a3nomdev.myapplication.AccompaniesActivity;
 import kiosk.ddc.a3nomdev.myapplication.R;
 import kiosk.ddc.a3nomdev.myapplication.ResultActivity;
 import kiosk.ddc.a3nomdev.myapplication.model.User;
@@ -21,10 +22,10 @@ import kiosk.ddc.a3nomdev.myapplication.model.User;
 
 public class AccompanyAdapter  extends RecyclerView.Adapter<AccompanyAdapter.MainViewHolder> {
     private List<User> data;
-    private ResultActivity activity;
+    private AccompaniesActivity activity;
 
 
-    public AccompanyAdapter(@NonNull List<User> data, ResultActivity activity) {
+    public AccompanyAdapter(@NonNull List<User> data, AccompaniesActivity activity) {
         this.data = data;
         this.activity=activity;
     }
@@ -38,15 +39,20 @@ public class AccompanyAdapter  extends RecyclerView.Adapter<AccompanyAdapter.Mai
     @Override
     public void onBindViewHolder(AccompanyAdapter.MainViewHolder holder, int position) {
         final User accompany = data.get(position);
-        holder.getTextViewName().setText(accompany.getFirstName()+" "+accompany.getLastName());
-        holder.getTextViewTable().setText("Table - "+accompany.getTableNumber());
+        holder.getTextViewName().setText(accompany.getTitle()+" "+ accompany.getFirstName()+" "+accompany.getLastName());
+
+        if(accompany.getTable()!=-1)
+        holder.getTextViewTable().setText("Table - "+accompany.getTable().toString());
+        else
+        holder.getTextViewTable().setText("Not Available");
+
         holder.getCheckBoxStatus().setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                  activity.ChangeState(accompany.getUserID(),b);
+                  activity.ChangeState(accompany.getPersonID(),b);
             }
         });
-        holder.getCheckBoxStatus().setChecked(accompany.getCheckIn());
+        holder.getCheckBoxStatus().setChecked(accompany.getAttended());
 
     }
 

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="kiosk.ddc.a3nomdev.myapplication.AccompaniesActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/border"
+        android:orientation="vertical">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="horizontal" android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:background="?attr/selectableItemBackground">
+
+
+
+            <Button
+                android:id="@+id/buttonSelectAll"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:text="ALL"
+                android:textColor="#FFFF"
+                android:theme="@style/User.Button" />
+
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:id="@+id/textViewNameAccompany"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.45"
+                android:text="NAME" />
+
+            <TextView
+
+                android:id="@+id/textViewNameAccompanyTable"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.45"
+                android:text="TABLE" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:background="#FFD4D2D2"
+            android:layout_marginBottom="5dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1"
+            android:orientation="vertical"
+            android:layout_marginTop="5dp">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewAccompany"
+                android:layout_weight="0.85"
+                android:layout_height="0dp"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.05"/>
+
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.1" 
+                android:orientation="horizontal"
+                android:weightSum="3">
+                
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"></View>
+                
+
+
+                <Button
+                    android:id="@+id/UserConfirm"
+                    style="@style/Widget.AppCompat.Button.Colored"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="@string/activity_results_confirm"
+                    android:textColor="#FFFF"
+                    android:theme="@style/User.Button"
+
+                    />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"></View>
+                
+            </LinearLayout>
+            
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

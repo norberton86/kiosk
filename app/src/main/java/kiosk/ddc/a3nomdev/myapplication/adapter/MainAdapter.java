@@ -37,12 +37,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
     @Override
     public void onBindViewHolder(MainViewHolder holder, int position) {
         final User user = data.get(position);
-        holder.getTextViewName().setText(user.getFirstName()+" "+user.getLastName());
-        holder.getTextViewAddress().setText(user.getAddress());
+        holder.getTextViewName().setText(user.getTitle()+" "+ user.getFirstName()+" "+user.getLastName());
+        holder.getTextViewAddress().setText("");
         holder.getButtonCheckIn().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                   activity.initFriends(user);
+                   activity.goFriends(user);
             }
         });
 

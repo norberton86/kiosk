@@ -1,6 +1,8 @@
 package kiosk.ddc.a3nomdev.myapplication;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
     public static String codigo;
     private String loginType="name";
 
-    @InjectView(R.id.editTextName) EditText editTextName;
-    @InjectView(R.id.editTextCompany) EditText editTextCompany;
+    @InjectView(R.id.editTextFirstName) EditText editTextFirstName;
+    @InjectView(R.id.editTextLastName) EditText editTextLastName;
     @InjectView(R.id.UserLogin) Button UserLogin;
 
     @Override
@@ -49,14 +51,14 @@ public class MainActivity extends AppCompatActivity {
         /*Drawable d=getResources().getDrawable(R.drawable.banner);
         getSupportActionBar().setBackgroundDrawable(d);*/
 
-        editTextName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        editTextFirstName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 return F( v,  actionId,  event);
             }
         });
 
-        editTextCompany.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        editTextLastName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 return F( v,  actionId,  event);
@@ -79,16 +81,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    @OnFocusChange(R.id.editTextName)
+    @OnFocusChange(R.id.editTextFirstName)
     void nameSelected() {
         loginType="name";
-        editTextCompany.setText("");
     }
 
-    @OnFocusChange(R.id.editTextCompany)
+    @OnFocusChange(R.id.editTextLastName)
     void companySelected() {
-        loginType="company";
-        editTextName.setText("");
+        loginType="name";
     }
 
 
@@ -111,15 +111,10 @@ public class MainActivity extends AppCompatActivity {
 
     void navAndGo()
     {
-        if(loginType.equalsIgnoreCase("company")&&editTextCompany.getText().toString().equalsIgnoreCase(""))
-        {
-            Toast.makeText(MainActivity.this,"Fill the field COMPANY",Toast.LENGTH_SHORT).show();
-            return;
-        }
 
-        if(loginType.equalsIgnoreCase("name")&&editTextName.getText().toString().equalsIgnoreCase(""))
+        if(loginType.equalsIgnoreCase("name")&&editTextFirstName.getText().toString().equalsIgnoreCase("")&&editTextLastName.getText().toString().equalsIgnoreCase(""))
         {
-            Toast.makeText(MainActivity.this,"Fill the field NAME",Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this,"Fill at least one field",Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -135,14 +130,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void CallWebService() {
 
-        final String data;
-        if(loginType.equalsIgnoreCase("company"))
-        data=editTextCompany.getText().toString();
-        else
-        data=editTextName.getText().toString();
+
+        String data=editTextFirstName.getText().toString()+"<-->"+editTextLastName.getText().toString();
 
         UserLogin.setEnabled(false);
         UserLogin.setText("Searching...");
+
 
         ddcService.Get(data,loginType)
                 .subscribe(new Observer<List<User>>() {
@@ -166,10 +159,6 @@ public class MainActivity extends AppCompatActivity {
                                    {
                                        UserCollection uc= new UserCollection();
 
-                                       User user=new User();
-                                       user.setCompanyName(u.get(0).getCompanyName());
-
-                                       uc.setUser(user);
                                        uc.setUsers(u);
 
 
@@ -213,7 +202,8 @@ public class MainActivity extends AppCompatActivity {
     void EnableButton()
     {
         UserLogin.setEnabled(true);
-        UserLogin.setText("SIGN IN");
+        UserLogin.setText("SEARCH");
+
     }
 
 }
