@@ -1,5 +1,7 @@
 package kiosk.ddc.a3nomdev.myapplication;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -43,8 +45,10 @@ public class ScanActivity extends AppCompatActivity implements ZBarScannerView.R
         Log.v("kkkk", result.getContents()); // Prints scan results
         Log.v("uuuu", result.getBarcodeFormat().getName()); // Prints the scan format (qrcode, pdf417 etc.)
 
-        MainActivity.codigo = result.getContents();
-        onBackPressed();
+        Intent intentRetornoDatos = new Intent();
+        intentRetornoDatos.putExtra("ReservationId", result.getContents());
+        setResult(Activity.RESULT_OK, intentRetornoDatos);
+        finish();
 
         // If you would like to resume scanning, call this method below:
         //mScannerView.resumeCameraPreview(this);

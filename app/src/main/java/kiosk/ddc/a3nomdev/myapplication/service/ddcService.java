@@ -23,9 +23,9 @@ import rx.schedulers.Schedulers;
 
 public class ddcService {
 
-    static Retrofit retrofit;
+    private static Retrofit retrofit;
 
-    static ddcEndpoint ddcEndPoint;
+    private static ddcEndpoint ddcEndPoint;
 
     private static ddcService DDCService=null;
 

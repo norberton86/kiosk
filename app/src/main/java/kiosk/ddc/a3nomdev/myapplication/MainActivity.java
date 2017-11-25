@@ -1,5 +1,6 @@
 package kiosk.ddc.a3nomdev.myapplication;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -7,6 +8,7 @@ import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -37,7 +39,9 @@ import rx.Observer;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static String codigo;
+
+    private static final int REQUEST_SCAN = 1;
+
     private String loginType="name";
 
     @InjectView(R.id.editTextFirstName) EditText editTextFirstName;
@@ -48,6 +52,20 @@ public class MainActivity extends AppCompatActivity {
     AlphaAnimation outAnimation;
 
     FrameLayout progressBarHolder;
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+
+        if(requestCode == REQUEST_SCAN && resultCode == Activity.RESULT_OK)
+        {
+            String reservationId = (String)data.getExtras().getSerializable("ReservationId");
+            loginType="scan";
+            CallType(reservationId);
+        }
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
     void scanClick() {
 
         Intent intent = new Intent(MainActivity.this, ScanActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, REQUEST_SCAN);
     }
 
 
@@ -150,14 +168,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void CallWebService() {
 
-
         String data=editTextFirstName.getText().toString()+"<-->"+editTextLastName.getText().toString();
 
         UserLogin.setEnabled(false);
         UserLogin.setText("Searching...");
 
-        ShowLoading();
+        CallType(data);
+    }
 
+    void CallType(String data)
+    {
+        ShowLoading();
         ddcService.getService(LocalStorage.getServer(this)).Get(data,loginType)
                 .subscribe(new Observer<List<User>>() {
 
