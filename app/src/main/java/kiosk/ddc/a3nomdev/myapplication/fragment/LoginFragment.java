@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.TextView;
 
 import butterknife.ButterKnife;
@@ -20,10 +21,10 @@ import kiosk.ddc.a3nomdev.myapplication.SettingsActivity;
 
 public class LoginFragment extends Fragment {
 
-    @InjectView(R.id.textlogin) TextView textlogin;
+    @InjectView(R.id.buttonloginSettings) Button buttonloginSettings;
     SettingsActivity mCallback;
 
-    @OnClick(R.id.textlogin)
+    @OnClick(R.id.buttonloginSettings)
     void userClick() {
 
         mCallback.onSucces();
@@ -53,16 +54,20 @@ public class LoginFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_login, container, false);
         ButterKnife.inject(this,view);
 
-        /*final Animation animShake = AnimationUtils.loadAnimation(getActivity(), R.anim.shake);
-        textlogin.startAnimation(animShake); */
+
 
         return view;
+    }
+
+    void Shake(View v)
+    {
+        final Animation animShake = AnimationUtils.loadAnimation(getActivity(), R.anim.shake);
+        v.startAnimation(animShake);
     }
 
 

@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -149,12 +151,20 @@ public class AccompaniesActivity extends AppCompatActivity {
     @OnClick(R.id.UserConfirm)
     void check() {
 
+        ArrayList<Integer>ids=getIds();
+        if(ids.size()==0)
+        {
+            Toast.makeText(this,"Select at least one person",Toast.LENGTH_LONG).show();
+            Shake(UserConfirm);
+            return;
+        }
+
         UserConfirm.setEnabled(false);
         UserConfirm.setText("Checking...");
 
         ShowLoading();
 
-        ddcService.Post(Integer.parseInt(userSelected.getReservationId()) ,getIds())
+        ddcService.Post(Integer.parseInt(userSelected.getReservationId()) ,ids)
                 .subscribe(new Observer<String>() {
 
                                @Override
@@ -218,6 +228,12 @@ public class AccompaniesActivity extends AppCompatActivity {
         outAnimation.setDuration(200);
         progressBarHolder.setAnimation(outAnimation);
         progressBarHolder.setVisibility(View.GONE);
+    }
+
+    void Shake(View v)
+    {
+        final Animation animShake = AnimationUtils.loadAnimation(this, R.anim.shake);
+        v.startAnimation(animShake);
     }
 
 }

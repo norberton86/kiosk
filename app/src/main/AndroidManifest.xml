@@ -43,7 +43,8 @@
             android:name=".SettingsActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/activity_settings"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".AccompaniesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="landscape" ></activity>
