@@ -1,13 +1,86 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="kiosk.ddc.a3nomdev.myapplication.fragment.SettingFragment">
+    android:padding="50dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_setting_fragment" />
+        android:layout_centerInParent="true"
+        android:background="@drawable/shadow"
+        android:elevation="2dp"
+        android:orientation="vertical"
+        android:padding="10dp">
 
-</FrameLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/editUserSetting"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+
+                android:drawableLeft="@mipmap/user"
+                android:hint="User Name"
+                android:inputType="textEmailAddress"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/editPassSetting"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+
+                android:drawableLeft="@mipmap/password"
+                android:hint="Password"
+                android:inputType="text"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/editUrlSettings"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+
+                android:drawableLeft="@mipmap/web"
+                android:hint="Server Url"
+                android:inputType="textWebEditText"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:gravity="center|bottom"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/buttonSaveSettings"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SAVE"
+                android:textColor="#FFFF"
+                android:textSize="18sp"
+                android:theme="@style/User.Button"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_gravity="center|bottom"/>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>
