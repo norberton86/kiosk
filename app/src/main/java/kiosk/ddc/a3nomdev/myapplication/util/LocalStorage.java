@@ -28,4 +28,17 @@ public class LocalStorage {
         editor.commit();
     }
 
+    public static String getServer(Context c)
+    {
+        SharedPreferences prefs = c.getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        return prefs.getString("Server", "http://ddc2.3nom.com/api/Guest/");
+    }
+    public static void setSettings(Context c,String server)
+    {
+        SharedPreferences prefs = c.getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString("Server", server);
+        editor.commit();
+    }
+
 }

@@ -22,8 +22,21 @@ import rx.schedulers.Schedulers;
  */
 
 public class ddcService {
+
     static Retrofit retrofit;
+
     static ddcEndpoint ddcEndPoint;
+
+    private static ddcService DDCService=null;
+
+    private static String url;
+
+     private  ddcService(String url)
+     {
+         this.url=url;
+         Create();
+     }
+
 
     private static void Create()
     {
@@ -36,16 +49,25 @@ public class ddcService {
             retrofit = new Retrofit.Builder()
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create(gson))
-                    .baseUrl(ddcEndpoint.SERVICE_ENDPOINT)
+                    .baseUrl(url)
                     .build();
 
             ddcEndPoint = retrofit.create(ddcEndpoint.class);
         }
     }
 
+
+    public static ddcService getService(String url)
+    {
+        if(DDCService==null)
+            DDCService=new ddcService(url);
+
+        return DDCService;
+    }
+
     public static Observable<List<User>> Get(String search, String type)
     {
-        Create();
+
         return  ddcEndPoint.Get(search,type)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread());
@@ -53,7 +75,7 @@ public class ddcService {
 
     public static Observable<List<User>> GetFriends(int id, int familyId)
     {
-        Create();
+
         return  ddcEndPoint.GetFriends(id,familyId)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread());
@@ -62,7 +84,7 @@ public class ddcService {
     public static Observable<String> Post(int reservationId, ArrayList<Integer> value)
     {
 
-        Create();
+
         return  ddcEndPoint.Post(reservationId,value)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread());

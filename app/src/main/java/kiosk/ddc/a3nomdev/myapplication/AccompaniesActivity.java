@@ -26,6 +26,7 @@ import kiosk.ddc.a3nomdev.myapplication.adapter.AccompanyAdapter;
 import kiosk.ddc.a3nomdev.myapplication.model.User;
 import kiosk.ddc.a3nomdev.myapplication.model.UserCollection;
 import kiosk.ddc.a3nomdev.myapplication.service.ddcService;
+import kiosk.ddc.a3nomdev.myapplication.util.LocalStorage;
 import rx.Observer;
 
 public class AccompaniesActivity extends AppCompatActivity {
@@ -117,7 +118,7 @@ public class AccompaniesActivity extends AppCompatActivity {
 
         ShowLoading();
 
-        ddcService.GetFriends(u.getPersonID(),u.getFamilyId())
+        ddcService.getService(LocalStorage.getServer(this)).GetFriends(u.getPersonID(),u.getFamilyId())
                 .subscribe(new Observer<List<User>>() {
 
                                @Override
@@ -164,7 +165,7 @@ public class AccompaniesActivity extends AppCompatActivity {
 
         ShowLoading();
 
-        ddcService.Post(Integer.parseInt(userSelected.getReservationId()) ,ids)
+        ddcService.getService(LocalStorage.getServer(this)).Post(Integer.parseInt(userSelected.getReservationId()) ,ids)
                 .subscribe(new Observer<String>() {
 
                                @Override

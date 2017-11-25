@@ -31,6 +31,7 @@ import kiosk.ddc.a3nomdev.myapplication.model.User;
 import kiosk.ddc.a3nomdev.myapplication.model.UserCollection;
 import kiosk.ddc.a3nomdev.myapplication.service.ddcService;
 import kiosk.ddc.a3nomdev.myapplication.util.FontManager;
+import kiosk.ddc.a3nomdev.myapplication.util.LocalStorage;
 import rx.Observer;
 
 
@@ -157,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
 
         ShowLoading();
 
-        ddcService.Get(data,loginType)
+        ddcService.getService(LocalStorage.getServer(this)).Get(data,loginType)
                 .subscribe(new Observer<List<User>>() {
 
                                @Override
