@@ -40,10 +40,11 @@
                         android:layout_height="wrap_content">
 
                         <android.support.v7.widget.AppCompatEditText
+                            android:id="@+id/editUser"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
-                            android:drawableLeft="@mipmap/user"
 
+                            android:drawableLeft="@mipmap/user"
                             android:hint="User Name"
                             android:inputType="textEmailAddress"
                             android:singleLine="true" />
@@ -59,7 +60,7 @@
                             android:layout_marginTop="16dp"
                             android:drawableLeft="@mipmap/password"
                             android:hint="Password"
-
+                            android:id="@+id/editPass"
                             android:inputType="textPassword"
                             android:singleLine="true" />
                     </android.support.design.widget.TextInputLayout>
