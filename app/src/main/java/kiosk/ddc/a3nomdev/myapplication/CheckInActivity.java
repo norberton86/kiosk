@@ -36,6 +36,7 @@ public class CheckInActivity extends AppCompatActivity {
 
         Intent i = getIntent();
         UserCollection uc = (UserCollection)i.getSerializableExtra("UserCollection");
+        uc.getUsers().add(0,uc.getUser());  //add main user to user list because need to be showed
         uc.setUsers(uc.Chossed());
 
         if(uc.getUsers().get(0).getIsSarElef()==1)

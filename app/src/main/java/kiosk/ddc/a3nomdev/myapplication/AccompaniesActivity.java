@@ -77,6 +77,9 @@ public class AccompaniesActivity extends AppCompatActivity {
     ArrayList<Integer> getIds()
     {
         ArrayList<Integer> result=new ArrayList<Integer>();
+
+        result.add( Integer.parseInt(userSelected.getReservationId())); //add the main user(always is by default)
+
         for(User u: friends)  //collect all selected ids
         {
             if(u.getAttended())
@@ -144,7 +147,6 @@ public class AccompaniesActivity extends AppCompatActivity {
 
                                    HideLoading();
 
-                                   users.add(0,userSelected);
                                    friends=users;
                                    recyclerViewAccompany.setAdapter(new AccompanyAdapter(users,AccompaniesActivity.this));
                                    recyclerViewAccompany.setLayoutManager(new LinearLayoutManager(AccompaniesActivity.this));
@@ -161,12 +163,6 @@ public class AccompaniesActivity extends AppCompatActivity {
     void check() {
 
         ArrayList<Integer>ids=getIds();
-        if(ids.size()==0)
-        {
-            Toast.makeText(this,"Select at least one person",Toast.LENGTH_LONG).show();
-            Shake(UserConfirm);
-            return;
-        }
 
         UserConfirm.setEnabled(false);
         UserConfirm.setText("Checking...");
