@@ -34,6 +34,10 @@ public class AccompaniesActivity extends AppCompatActivity {
     @InjectView(R.id.recyclerViewAccompany) RecyclerView recyclerViewAccompany;
     @InjectView(R.id.UserConfirm) Button UserConfirm;
 
+    @InjectView(R.id.textViewNameAccompanyMain) TextView textViewNameAccompanyMain;
+    @InjectView(R.id.textViewNameAccompanyAddressMain) TextView textViewNameAccompanyAddressMain;
+    @InjectView(R.id.textViewNameAccompanyTableMain) TextView textViewNameAccompanyTableMain;
+
     User userSelected;
     List<User> friends;
 
@@ -60,6 +64,10 @@ public class AccompaniesActivity extends AppCompatActivity {
         Intent i = getIntent();
         userSelected = (User)i.getSerializableExtra("User");
         userSelected.setAttended(true);
+
+        textViewNameAccompanyMain.setText(userSelected.getLastName()+", "+userSelected.getTitle()+" "+userSelected.getFirstName());
+        textViewNameAccompanyAddressMain.setText(userSelected.getFullAddress());
+        textViewNameAccompanyTableMain.setText(userSelected.getTable()!=-1?userSelected.getTable().toString():"N/A");
 
         progressBarHolder = (FrameLayout) findViewById(R.id.progressBarHolder);
 
