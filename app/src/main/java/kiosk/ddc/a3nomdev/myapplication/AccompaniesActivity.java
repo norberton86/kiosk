@@ -73,7 +73,7 @@ public class AccompaniesActivity extends AppCompatActivity {
         {
             if(u.getAttended())
             {
-                result.add(u.getPersonID());
+                result.add(Integer.parseInt( u.getReservationId()));
             }
         }
 

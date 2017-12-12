@@ -10,7 +10,6 @@ import java.io.Serializable;
  */
 
 public class User implements Serializable{
-
     @SerializedName("reservationId")
     @Expose
     private String reservationId;
@@ -41,6 +40,15 @@ public class User implements Serializable{
     @SerializedName("personID")
     @Expose
     private Integer personID;
+    @SerializedName("fullAddress")
+    @Expose
+    private String fullAddress;
+    @SerializedName("isSarElef")
+    @Expose
+    private Integer isSarElef;
+    @SerializedName("alumnus")
+    @Expose
+    private String alumnus;
 
     public String getReservationId() {
         return reservationId;
@@ -120,5 +128,29 @@ public class User implements Serializable{
 
     public void setPersonID(Integer personID) {
         this.personID = personID;
+    }
+
+    public String getFullAddress() {
+        return fullAddress;
+    }
+
+    public void setFullAddress(String fullAddress) {
+        this.fullAddress = fullAddress;
+    }
+
+    public Integer getIsSarElef() {
+        return isSarElef;
+    }
+
+    public void setIsSarElef(Integer isSarElef) {
+        this.isSarElef = isSarElef;
+    }
+
+    public String getAlumnus() {
+        return alumnus;
+    }
+
+    public void setAlumnus(String alumnus) {
+        this.alumnus = alumnus;
     }
 }
