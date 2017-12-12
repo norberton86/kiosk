@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +38,10 @@ public class AccompaniesActivity extends AppCompatActivity {
     @InjectView(R.id.textViewNameAccompanyMain) TextView textViewNameAccompanyMain;
     @InjectView(R.id.textViewNameAccompanyAddressMain) TextView textViewNameAccompanyAddressMain;
     @InjectView(R.id.textViewNameAccompanyTableMain) TextView textViewNameAccompanyTableMain;
+
+    @InjectView(R.id.header) LinearLayout header;
+    @InjectView(R.id.headerDivisor) View headerDivisor;
+
 
     User userSelected;
     List<User> friends;
@@ -72,6 +77,20 @@ public class AccompaniesActivity extends AppCompatActivity {
         progressBarHolder = (FrameLayout) findViewById(R.id.progressBarHolder);
 
         initFriends(userSelected);
+    }
+
+    void hideTable()
+    {
+        header.setVisibility(View.INVISIBLE);
+        headerDivisor.setVisibility(View.INVISIBLE);
+        recyclerViewAccompany.setVisibility(View.INVISIBLE);
+    }
+
+    void ShowTable()
+    {
+        header.setVisibility(View.VISIBLE);
+        headerDivisor.setVisibility(View.VISIBLE);
+        recyclerViewAccompany.setVisibility(View.VISIBLE);
     }
 
     ArrayList<Integer> getIds()
@@ -146,6 +165,8 @@ public class AccompaniesActivity extends AppCompatActivity {
                                public void onNext(List<User> users) {
 
                                    HideLoading();
+                                   if(users.size()>0)
+                                       ShowTable();
 
                                    friends=users;
                                    recyclerViewAccompany.setAdapter(new AccompanyAdapter(users,AccompaniesActivity.this));
