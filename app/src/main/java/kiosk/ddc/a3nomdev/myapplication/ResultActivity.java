@@ -30,7 +30,7 @@ import rx.Observer;
 public class ResultActivity extends AppCompatActivity {
 
     @InjectView(R.id.recyclerView) RecyclerView recyclerView;
-    @InjectView(R.id.textViewCompanyName) TextView textViewCompanyName;
+   // @InjectView(R.id.textViewCompanyName) TextView textViewCompanyName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class ResultActivity extends AppCompatActivity {
         UserCollection uc = (UserCollection)i.getSerializableExtra("UserCollection");
 
 
-        textViewCompanyName.setText("Results");
+       // textViewCompanyName.setText("Results");
 
         recyclerView.setAdapter(new MainAdapter(uc.getUsers(),this));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

@@ -19,7 +19,7 @@ import kiosk.ddc.a3nomdev.myapplication.util.FontManager;
 public class CheckInActivity extends AppCompatActivity {
 
 
-
+    @InjectView(R.id.textViewVip) TextView textViewVip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,16 @@ public class CheckInActivity extends AppCompatActivity {
         Intent i = getIntent();
         UserCollection uc = (UserCollection)i.getSerializableExtra("UserCollection");
         uc.setUsers(uc.Chossed());
+
+        if(uc.getUsers().get(0).getIsSarElef()==1)
+        {
+            textViewVip.setText("Please go to the reservation desk to receive a token of our appreciation for your generous donation");
+        }
+        else
+        {
+            textViewVip.setText("Thank you for your participation. Enjoy the evening!");
+        }
+
 
 
         RecyclerView recyclerViewAccompany = (RecyclerView) findViewById(R.id.recyclerViewFinals);
