@@ -32,12 +32,12 @@
         <activity
             android:name=".ResultActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label="@string/activity_results"
+            android:label=""
             android:screenOrientation="landscape" />
         <activity
             android:name=".CheckInActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label="@string/activity_check"
+            android:label=""
             android:screenOrientation="landscape" />
         <activity
             android:name=".SettingsActivity"
@@ -47,6 +47,7 @@
             android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".AccompaniesActivity"
             android:configChanges="orientation|keyboardHidden"
+            android:label=""
             android:screenOrientation="landscape" ></activity>
     </application>
 
