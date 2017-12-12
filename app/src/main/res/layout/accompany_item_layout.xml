@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.45"
         android:text="Willner Stacy"
-        android:textSize="24dp"/>
+        android:textSize="20dp"/>
 
     <TextView
         android:id="@+id/textViewNameAccompanyAddress"
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.1"
         android:text="N/A"
-        android:textSize="24dp"/>
+        android:textSize="20dp"/>
 
 
 
