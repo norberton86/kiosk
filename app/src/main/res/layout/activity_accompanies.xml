@@ -43,12 +43,19 @@
                 android:text="NAME" />
 
             <TextView
-
                 android:id="@+id/textViewNameAccompanyTable"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.45"
+                android:layout_weight="0.1"
                 android:text="TABLE" />
+
+            <TextView
+                android:id="@+id/textViewNameAccompanyAddress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="ADDRESS" />
+
 
         </LinearLayout>
 

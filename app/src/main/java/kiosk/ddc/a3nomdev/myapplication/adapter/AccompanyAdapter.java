@@ -39,12 +39,14 @@ public class AccompanyAdapter  extends RecyclerView.Adapter<AccompanyAdapter.Mai
     @Override
     public void onBindViewHolder(AccompanyAdapter.MainViewHolder holder, int position) {
         final User accompany = data.get(position);
-        holder.getTextViewName().setText(accompany.getTitle()+" "+ accompany.getFirstName()+" "+accompany.getLastName());
+        holder.getTextViewName().setText(accompany.getLastName()+", "+ accompany.getFirstName()+" "+accompany.getTitle());
 
         if(accompany.getTable()!=-1)
         holder.getTextViewTable().setText("Table - "+accompany.getTable().toString());
         else
-        holder.getTextViewTable().setText("Not Available");
+        holder.getTextViewTable().setText("N/A");
+
+        holder.getTextViewAddress().setText(accompany.getFullAddress());
 
         holder.getCheckBoxStatus().setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -65,13 +67,14 @@ public class AccompanyAdapter  extends RecyclerView.Adapter<AccompanyAdapter.Mai
         private CheckBox checkBoxStatus;
         private TextView textViewName;
         private TextView textViewTable;
-
+        private TextView textViewAddress;
 
         public MainViewHolder(View itemView) {
             super(itemView);
 
             textViewName = (TextView) itemView.findViewById(R.id.textViewNameAccompany);
             textViewTable = (TextView) itemView.findViewById(R.id.textViewNameAccompanyTable);
+            textViewAddress = (TextView) itemView.findViewById(R.id.textViewNameAccompanyAddress);
             checkBoxStatus=(CheckBox)itemView.findViewById(R.id.checkBoxStatus);
         }
 
@@ -87,7 +90,9 @@ public class AccompanyAdapter  extends RecyclerView.Adapter<AccompanyAdapter.Mai
             return checkBoxStatus;
         }
 
-
+        public TextView getTextViewAddress() {
+            return textViewAddress;
+        }
 
     }
 }
