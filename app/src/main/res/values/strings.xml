@@ -6,7 +6,7 @@
     <string name="activity_check">Check-in Complete</string>
     <string name="activity_results_confirm">Confirm</string>
     <string name="activity_results_accomponay">Accompany by</string>
-    <string name="activity_search_reservation">Please enter your name to locate your reservation or scan the QR code</string>
+    <string name="activity_search_reservation">Please enter your name to locate your reservation</string>
     <string name="activity_result_reservation">Description about the company results</string>
     <string name="fa_icon_user">&#xf007;</string>
     <string name="fa_icon_qrcode">&#xf029;</string>
