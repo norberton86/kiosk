@@ -38,8 +38,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
     @Override
     public void onBindViewHolder(MainViewHolder holder, int position) {
         final User user = data.get(position);
-        holder.getTextViewName().setText(user.getTitle()+" "+ user.getFirstName()+" "+user.getLastName());
-        holder.getTextViewAddress().setText("");
+        holder.getTextViewName().setText(user.getLastName()+", "+user.getTitle()+" "+user.getFirstName());
+        holder.getTextViewAddress().setText(user.getFullAddress());
         holder.getButtonCheckIn().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
