@@ -10,76 +10,56 @@
         android:layout_height="match_parent"
         android:background="@drawable/shadow"
         android:orientation="vertical"
-        android:layout_below="@+id/progressBarHolder"
-        android:layout_centerHorizontal="true">
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true">
 
         <LinearLayout
-            android:orientation="horizontal" android:layout_width="match_parent"
+            android:orientation="vertical" android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="1"
-
-            android:background="?attr/selectableItemBackground">
-
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:src="@mipmap/user"/>
-
-            <!--<View
-                android:id="@+id/viewMain"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="0.1"
-                /> -->
+            android:background="?attr/selectableItemBackground"
+            android:paddingLeft="20dp">
 
             <TextView
-                android:layout_marginLeft="10dp"
                 android:id="@+id/textViewNameAccompanyMain"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.45"
+                android:paddingTop="8dp"
                 android:text="Willner Stacy"
-                android:textSize="20dp"
-                android:paddingTop="8dp"/>
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/textViewNameAccompanyAddressMain"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.35"
                 android:text="454 ne 23rd st"
                 android:paddingTop="8dp"/>
+            <TextView
+                android:id="@+id/textViewNameAccompanyTableMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="8dp"
+                android:text="N/A"
+                android:textSize="15dp" />
 
             <TextView
-
-                android:id="@+id/textViewNameAccompanyTableMain"
-                android:layout_width="0dp"
+                android:id="@+id/textViewNameLetter"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:text="N/A"
-                android:textSize="20dp"
-                android:paddingTop="8dp"/>
+                android:paddingTop="8dp"
+                android:text="Other reservations on this account:"
+                android:textSize="18dp" />
 
         </LinearLayout>
 
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1px"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:background="#FFD4D2D2"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="5dp"/>
-
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:orientation="horizontal" android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="1"
-            android:background="?attr/selectableItemBackground"
             android:id="@+id/header"
-            android:visibility="invisible">
-
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            android:weightSum="1">
 
 
             <Button
@@ -94,41 +74,35 @@
 
 
             <TextView
-                android:layout_marginLeft="10dp"
                 android:id="@+id/textViewNameAccompany"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:layout_weight="0.45"
-                android:text="NAME" />
-
-
-            <TextView
-                android:id="@+id/textViewNameAccompanyAddress"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.35"
-                android:text="ADDRESS" />
+                android:text="NAME"
+                android:textStyle="bold"/>
 
 
             <TextView
                 android:id="@+id/textViewNameAccompanyTable"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:text="TABLE" />
+                android:layout_weight="0.2"
+                android:text="TABLE"
+                android:textStyle="bold"/>
 
 
         </LinearLayout>
 
         <View
+            android:id="@+id/headerDivisor"
             android:layout_width="fill_parent"
             android:layout_height="1px"
+            android:layout_marginBottom="5dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:background="#FFD4D2D2"
-            android:layout_marginBottom="5dp"
-            android:id="@+id/headerDivisor"
-            android:visibility="invisible"/>
+            android:visibility="visible" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -138,12 +112,12 @@
             android:layout_marginTop="5dp">
 
             <android.support.v7.widget.RecyclerView
-                android:visibility="invisible"
                 android:id="@+id/recyclerViewAccompany"
-                android:layout_weight="0.85"
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_weight="0.85"
                 android:scrollbars="vertical"
-                android:layout_width="match_parent"/>
+                android:visibility="visible" />
 
             <View
                 android:layout_width="match_parent"

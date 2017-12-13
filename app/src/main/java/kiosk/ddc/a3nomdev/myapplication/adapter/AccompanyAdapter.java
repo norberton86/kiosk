@@ -44,9 +44,9 @@ public class AccompanyAdapter  extends RecyclerView.Adapter<AccompanyAdapter.Mai
         if(accompany.getTable()!=-1)
         holder.getTextViewTable().setText("Table - "+accompany.getTable().toString());
         else
-        holder.getTextViewTable().setText("N/A");
+        holder.getTextViewTable().setText("Table - N/A");
 
-        holder.getTextViewAddress().setText(accompany.getFullAddress());
+
 
         holder.getCheckBoxStatus().setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -67,20 +67,21 @@ public class AccompanyAdapter  extends RecyclerView.Adapter<AccompanyAdapter.Mai
         private CheckBox checkBoxStatus;
         private TextView textViewName;
         private TextView textViewTable;
-        private TextView textViewAddress;
+
 
         public MainViewHolder(View itemView) {
             super(itemView);
 
             textViewName = (TextView) itemView.findViewById(R.id.textViewNameAccompany);
             textViewTable = (TextView) itemView.findViewById(R.id.textViewNameAccompanyTable);
-            textViewAddress = (TextView) itemView.findViewById(R.id.textViewNameAccompanyAddress);
+
             checkBoxStatus=(CheckBox)itemView.findViewById(R.id.checkBoxStatus);
         }
 
         public TextView getTextViewName() {
             return textViewName;
         }
+
 
         public TextView getTextViewTable() {
             return textViewTable;
@@ -90,9 +91,6 @@ public class AccompanyAdapter  extends RecyclerView.Adapter<AccompanyAdapter.Mai
             return checkBoxStatus;
         }
 
-        public TextView getTextViewAddress() {
-            return textViewAddress;
-        }
 
     }
 }
