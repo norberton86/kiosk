@@ -14,9 +14,12 @@
         android:layout_alignParentLeft="true">
 
         <LinearLayout
-            android:orientation="vertical" android:layout_width="match_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackground"
+            android:gravity="center_horizontal"
+            android:hapticFeedbackEnabled="true"
+            android:orientation="vertical"
             android:paddingLeft="20dp">
 
             <TextView
@@ -25,53 +28,60 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="8dp"
                 android:text="Willner Stacy"
-                android:textSize="20dp" />
+                android:textSize="28dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textViewNameAccompanyAddressMain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingTop="8dp"
                 android:text="454 ne 23rd st"
-                android:paddingTop="8dp"/>
+                android:textColor="#8c9693"
+                android:textSize="26dp" />
+
             <TextView
                 android:id="@+id/textViewNameAccompanyTableMain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="8dp"
                 android:text="N/A"
-                android:textSize="15dp" />
+                android:textColor="#8c9693"
+                android:textSize="26dp" />
 
             <TextView
                 android:id="@+id/textViewNameLetter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:paddingTop="8dp"
                 android:text="Other reservations on this account:"
-                android:textSize="18dp" />
+                android:textSize="24dp"
+                android:textStyle="bold"
+                android:visibility="invisible" />
 
         </LinearLayout>
 
         <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/header"
-            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:background="?attr/selectableItemBackground"
             android:orientation="horizontal"
-            android:visibility="visible"
+            android:paddingLeft="20dp"
+            android:visibility="invisible"
+            android:layout_marginBottom="20dp"
             android:weightSum="1">
 
 
-            <Button
-                android:id="@+id/buttonSelectAll"
-                style="@style/Widget.AppCompat.Button.Colored"
+            <CheckBox
+                android:id="@+id/checkBoxAll"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.1"
                 android:text="ALL"
-                android:textColor="#FFFF"
-                android:theme="@style/User.Button" />
-
+                android:textSize="22dp"/>
 
             <TextView
                 android:id="@+id/textViewNameAccompany"
@@ -79,8 +89,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="0.45"
-                android:text="NAME"
-                android:textStyle="bold"/>
+                android:text=""
+                android:textStyle="bold" />
 
 
             <TextView
@@ -88,28 +98,19 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.2"
-                android:text="TABLE"
-                android:textStyle="bold"/>
+                android:text=""
+                android:textStyle="bold" />
 
 
         </LinearLayout>
-
-        <View
-            android:id="@+id/headerDivisor"
-            android:layout_width="fill_parent"
-            android:layout_height="1px"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:background="#FFD4D2D2"
-            android:visibility="visible" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:weightSum="1"
             android:orientation="vertical"
-            android:layout_marginTop="5dp">
+            android:layout_marginTop="5dp"
+            android:paddingLeft="20dp">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerViewAccompany"
@@ -117,12 +118,12 @@
                 android:layout_height="0dp"
                 android:layout_weight="0.85"
                 android:scrollbars="vertical"
-                android:visibility="visible" />
+                android:visibility="invisible" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.05"/>
+                android:layout_weight="0.02"/>
 
             
             <LinearLayout

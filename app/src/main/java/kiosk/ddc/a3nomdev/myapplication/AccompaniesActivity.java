@@ -6,12 +6,16 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -40,7 +44,9 @@ public class AccompaniesActivity extends AppCompatActivity {
     @InjectView(R.id.textViewNameAccompanyTableMain) TextView textViewNameAccompanyTableMain;
 
     @InjectView(R.id.header) LinearLayout header;
-    @InjectView(R.id.headerDivisor) View headerDivisor;
+    @InjectView(R.id.textViewNameLetter) TextView textViewNameLetter;
+
+    @InjectView(R.id.checkBoxAll) CheckBox checkBoxAll;
 
 
     User userSelected;
@@ -57,7 +63,9 @@ public class AccompaniesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_accompanies);
+      
 
         ButterKnife.inject(this);
 
@@ -72,7 +80,7 @@ public class AccompaniesActivity extends AppCompatActivity {
 
         textViewNameAccompanyMain.setText(userSelected.getLastName()+", "+userSelected.getTitle()+" "+userSelected.getFirstName());
         textViewNameAccompanyAddressMain.setText(userSelected.getFullAddress());
-        textViewNameAccompanyTableMain.setText(userSelected.getTable()!=-1?"TABLE - "+userSelected.getTable().toString():"TABLE - N/A");
+        textViewNameAccompanyTableMain.setText(userSelected.getTable()!=-1?"Table - "+userSelected.getTable().toString():"Table - N/A");
 
         progressBarHolder = (FrameLayout) findViewById(R.id.progressBarHolder);
 
@@ -82,15 +90,15 @@ public class AccompaniesActivity extends AppCompatActivity {
     void hideTable()
     {
         header.setVisibility(View.INVISIBLE);
-        headerDivisor.setVisibility(View.INVISIBLE);
         recyclerViewAccompany.setVisibility(View.INVISIBLE);
+        textViewNameLetter.setVisibility(View.INVISIBLE);
     }
 
     void ShowTable()
     {
         header.setVisibility(View.VISIBLE);
-        headerDivisor.setVisibility(View.VISIBLE);
         recyclerViewAccompany.setVisibility(View.VISIBLE);
+        textViewNameLetter.setVisibility(View.VISIBLE);
     }
 
     ArrayList<Integer> getIds()
@@ -110,10 +118,10 @@ public class AccompaniesActivity extends AppCompatActivity {
         return result;
     }
 
-    @OnClick(R.id.buttonSelectAll)
+    @OnClick(R.id.checkBoxAll)
     void All() {
 
-        all=!all;
+        all=checkBoxAll.isChecked();
 
         for(User u : friends)
         {
