@@ -17,26 +17,31 @@
 
 
 
-    <RelativeLayout
-            android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:layout_width="0dp">
-
-
-            <LinearLayout
-                android:layout_width="fill_parent"
+    <LinearLayout
+                android:layout_weight="2"
+                android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 android:orientation="vertical"
                 android:layout_margin="40dp"
                 android:background="@drawable/shadow">
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textSize="120sp"
+                    android:textColor="@color/colorScan"
+                    android:text="@string/fa_icon_check_circle"
+                    android:id="@+id/checkImage"/>
 
 
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="50dp"
-                    android:textSize="15sp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="20sp"
                     android:gravity="center"
                     android:text="Check-in complete" />
 
@@ -52,7 +57,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical"
-                    android:weightSum="1">
+                    android:weightSum="1"
+                    android:layout_marginTop="10dp">
 
 
                     <android.support.v7.widget.RecyclerView
@@ -70,14 +76,16 @@
                         android:layout_weight="0.2"
                         android:orientation="vertical"
                         android:gravity="center"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp">
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp">
 
                         <TextView
                             android:id="@+id/textViewVip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="You have completed Check-in" />
+                            android:text="You have completed Check-in"
+                            android:textSize="15sp"
+                            android:textStyle="bold"/>
 
 
                     </LinearLayout>
@@ -88,19 +96,6 @@
             </LinearLayout>
 
 
-        <TextView
-                android:layout_marginTop="14dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:gravity="center"
-                android:textSize="80sp"
-                android:textColor="@color/colorScan"
-                android:text="@string/fa_icon_check_circle"
-                android:id="@+id/checkImage"/>
-
-    </RelativeLayout>
 
 
 
