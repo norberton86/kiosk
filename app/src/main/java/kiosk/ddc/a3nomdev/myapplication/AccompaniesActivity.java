@@ -21,6 +21,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.yarolegovich.lovelydialog.LovelyInfoDialog;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -153,7 +155,7 @@ public class AccompaniesActivity extends AppCompatActivity {
                                @Override
                                public void onError(Throwable e) {
                                    HideLoading();
-                                   Toast.makeText(AccompaniesActivity.this, "Error trying to get Accompanies", Toast.LENGTH_SHORT).show();
+                                   showDialog("Error","Error trying to get Accompanies");
                                }
 
                                @Override
@@ -196,7 +198,7 @@ public class AccompaniesActivity extends AppCompatActivity {
                                public void onError(Throwable e) {
                                    HideLoading();
                                    EnableButton();
-                                   Toast.makeText(AccompaniesActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                                  showDialog("Error","Error trying to checking");
                                }
 
                                @Override
@@ -223,6 +225,16 @@ public class AccompaniesActivity extends AppCompatActivity {
 
 
 
+    }
+
+    void showDialog(String title,String message)
+    {
+        new LovelyInfoDialog(this)
+                .setTopColorRes(R.color.colorPrimary)
+                .setIcon(R.mipmap.information)
+                .setTitle(title)
+                .setMessage(message)
+                .show();
     }
 
     void EnableButton()
