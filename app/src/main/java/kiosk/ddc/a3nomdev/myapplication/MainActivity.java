@@ -23,7 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
@@ -158,7 +158,8 @@ public class MainActivity extends AppCompatActivity {
 
         if(loginType.equalsIgnoreCase("name")&&editTextFirstName.getText().toString().equalsIgnoreCase("")&&editTextLastName.getText().toString().equalsIgnoreCase(""))
         {
-            Toast.makeText(MainActivity.this,"Fill at least one field",Toast.LENGTH_SHORT).show();
+
+            showDialog("Error","Fill at least one field");
             return;
         }
 
@@ -196,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
                                public void onError(Throwable e) {
                                    HideLoading();
                                    EnableButton();
-                                   Toast.makeText(MainActivity.this, "Error trying to login", Toast.LENGTH_SHORT).show();
+                                   showDialog("Error","Error trying to login");
                                }
 
                                @Override
@@ -216,8 +217,7 @@ public class MainActivity extends AppCompatActivity {
                                    }
                                    else
                                    {
-                                        showDialog();
-                                       //Toast.makeText(MainActivity.this, "Record not found, please see a staff member", Toast.LENGTH_SHORT).show();
+                                       showDialog("Record not found","Please see a staff member");
                                    }
 
                                }
@@ -226,13 +226,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    void showDialog()
+    void showDialog(String title,String message)
     {
         new LovelyInfoDialog(this)
                 .setTopColorRes(R.color.colorPrimary)
                 .setIcon(R.mipmap.information)
-                .setTitle("RECORD NOT FOUND")
-                .setMessage("PLEASE SEE A STAFF MEMBER")
+                .setTitle(title)
+                .setMessage(message)
                 .show();
     }
 
