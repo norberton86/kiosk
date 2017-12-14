@@ -50,5 +50,6 @@ dependencies {
     compile 'com.android.support:support-v4:26.+'
     compile 'com.android.support:design:26.+'
     compile 'com.android.support:cardview-v7:26.+'
+    compile 'com.yarolegovich:lovely-dialog:1.0.7'
     testCompile 'junit:junit:4.12'
 }

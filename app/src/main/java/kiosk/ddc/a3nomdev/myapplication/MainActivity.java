@@ -2,10 +2,13 @@ package kiosk.ddc.a3nomdev.myapplication;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
+import android.support.v4.app.DialogFragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,12 +26,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.yarolegovich.lovelydialog.LovelyInfoDialog;
+
 import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 import butterknife.OnFocusChange;
+
 import kiosk.ddc.a3nomdev.myapplication.model.User;
 import kiosk.ddc.a3nomdev.myapplication.model.UserCollection;
 import kiosk.ddc.a3nomdev.myapplication.service.ddcService;
@@ -210,12 +216,24 @@ public class MainActivity extends AppCompatActivity {
                                    }
                                    else
                                    {
-                                       Toast.makeText(MainActivity.this, "Record not found, please see a staff member", Toast.LENGTH_SHORT).show();
+                                        showDialog();
+                                       //Toast.makeText(MainActivity.this, "Record not found, please see a staff member", Toast.LENGTH_SHORT).show();
                                    }
 
                                }
                            }
                 );
+    }
+
+
+    void showDialog()
+    {
+        new LovelyInfoDialog(this)
+                .setTopColorRes(R.color.colorPrimary)
+                .setIcon(R.mipmap.information)
+                .setTitle("RECORD NOT FOUND")
+                .setMessage("PLEASE SEE A STAFF MEMBER")
+                .show();
     }
 
     @Override
