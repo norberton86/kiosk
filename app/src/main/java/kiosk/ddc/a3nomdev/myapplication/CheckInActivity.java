@@ -11,6 +11,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import kiosk.ddc.a3nomdev.myapplication.adapter.FinalAdapter;
@@ -23,7 +26,9 @@ public class CheckInActivity extends AppCompatActivity {
     @InjectView(R.id.textViewVipSupport) TextView textViewVipSupport;
     @InjectView(R.id.textViewVip) TextView textViewVip;
 
+    private static final long SPLASH_SCREEN_DELAY = 5000;
 
+    boolean goBack=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +64,8 @@ public class CheckInActivity extends AppCompatActivity {
         recyclerViewAccompany.setAdapter(new FinalAdapter(uc.StringForFinal()));
         recyclerViewAccompany.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewAccompany.addItemDecoration(new DividerItemDecoration(this,0));
+
+        Timer();
     }
 
     @Override
@@ -66,10 +73,32 @@ public class CheckInActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 // app icon in action bar clicked; goto parent activity.
+                goBack=true;
                 startActivity(new Intent(CheckInActivity.this, SplashActivity.class));
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    void Timer()
+    {
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+
+
+                if(!goBack)
+                {
+                    startActivity(new Intent(CheckInActivity.this, SplashActivity.class));
+                    finish();
+                }
+
+            }
+        };
+
+        // Simulate a long loading process on application startup.
+        Timer timer = new Timer();
+        timer.schedule(task, SPLASH_SCREEN_DELAY);
     }
 }
