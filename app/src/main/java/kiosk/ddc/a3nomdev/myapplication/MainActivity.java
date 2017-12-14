@@ -79,6 +79,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
 
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         //load the images from Font Awesome Icon
         Typeface iconFont = FontManager.getTypeface(getApplicationContext(), FontManager.FONTAWESOME);
         FontManager.markAsIconContainer(findViewById(R.id.mio), iconFont);
@@ -257,6 +261,14 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             return true;
         }
+        else
+            if(id==android.R.id.home)
+            {
+                // app icon in action bar clicked; goto parent activity.
+                this.finish();
+                return true;
+            }
+
 
         return super.onOptionsItemSelected(item);
     }

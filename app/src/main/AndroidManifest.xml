@@ -19,14 +19,10 @@
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label=""
-            android:launchMode="singleTask"
+
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateHidden">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".ScanActivity" />
         <activity
@@ -44,11 +40,24 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/activity_settings"
             android:screenOrientation="landscape"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".AccompaniesActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".AccompaniesActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label=""
-            android:screenOrientation="landscape" ></activity>
+            android:screenOrientation="landscape" />
+
+        <activity android:name=".SplashActivity"
+
+            android:launchMode="singleTask"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
     </application>
 
 </manifest>
