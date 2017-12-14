@@ -43,10 +43,9 @@ public class AccompaniesActivity extends AppCompatActivity {
     @InjectView(R.id.textViewNameAccompanyAddressMain) TextView textViewNameAccompanyAddressMain;
     @InjectView(R.id.textViewNameAccompanyTableMain) TextView textViewNameAccompanyTableMain;
 
-    @InjectView(R.id.header) LinearLayout header;
+
     @InjectView(R.id.textViewNameLetter) TextView textViewNameLetter;
 
-    @InjectView(R.id.checkBoxAll) CheckBox checkBoxAll;
 
 
     User userSelected;
@@ -65,7 +64,7 @@ public class AccompaniesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_accompanies);
-      
+
 
         ButterKnife.inject(this);
 
@@ -89,14 +88,14 @@ public class AccompaniesActivity extends AppCompatActivity {
 
     void hideTable()
     {
-        header.setVisibility(View.INVISIBLE);
+
         recyclerViewAccompany.setVisibility(View.INVISIBLE);
         textViewNameLetter.setVisibility(View.INVISIBLE);
     }
 
     void ShowTable()
     {
-        header.setVisibility(View.VISIBLE);
+
         recyclerViewAccompany.setVisibility(View.VISIBLE);
         textViewNameLetter.setVisibility(View.VISIBLE);
     }
@@ -118,19 +117,7 @@ public class AccompaniesActivity extends AppCompatActivity {
         return result;
     }
 
-    @OnClick(R.id.checkBoxAll)
-    void All() {
 
-        all=checkBoxAll.isChecked();
-
-        for(User u : friends)
-        {
-            u.setAttended(all);
-        }
-        recyclerViewAccompany.setAdapter(new AccompanyAdapter(friends,AccompaniesActivity.this));
-        recyclerViewAccompany.setLayoutManager(new LinearLayoutManager(AccompaniesActivity.this));
-        recyclerViewAccompany.addItemDecoration(new DividerItemDecoration(AccompaniesActivity.this,0));
-    }
 
     public void ChangeState(int id,boolean state)
     {

@@ -40,12 +40,20 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MainViewHolder
         final User user = data.get(position);
         holder.getTextViewName().setText(user.getLastName()+", "+user.getTitle()+" "+user.getFirstName());
         holder.getTextViewAddress().setText(user.getFullAddress());
-        holder.getButtonCheckIn().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                   activity.goFriends(user);
-            }
-        });
+
+        if(!user.getAttended())
+            holder.getButtonCheckIn().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    activity.goFriends(user);
+                }
+            });
+        else
+        {
+            holder.getButtonCheckIn().setText("ALREADY CHECKED IN");
+            holder.getButtonCheckIn().getBackground().setAlpha(128);
+        }
+
 
     }
 

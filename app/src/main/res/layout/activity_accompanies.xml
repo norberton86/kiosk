@@ -8,25 +8,35 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/shadow"
         android:orientation="vertical"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true">
+        android:layout_alignParentLeft="true"
+        android:padding="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
+            android:background="#FFFAF5"
             android:gravity="center_horizontal"
             android:hapticFeedbackEnabled="true"
             android:orientation="vertical"
-            android:paddingLeft="20dp">
+            android:paddingLeft="1dp"
+            android:paddingRight="1dp">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-CHECKING IN-"
+                android:textSize="28dp"
+                android:textColor="@color/colorPrimary"
+                />
 
             <TextView
                 android:id="@+id/textViewNameAccompanyMain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="8dp"
+                android:layout_marginTop="15dp"
                 android:text="Willner Stacy"
                 android:textSize="28dp"
                 android:textStyle="bold" />
@@ -35,73 +45,42 @@
                 android:id="@+id/textViewNameAccompanyAddressMain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="8dp"
+
                 android:text="454 ne 23rd st"
                 android:textColor="#8c9693"
-                android:textSize="26dp" />
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/textViewNameAccompanyTableMain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="20dp"
                 android:text="N/A"
                 android:textColor="#8c9693"
-                android:textSize="26dp" />
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:background="#f3f3f3"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="1dp"
+            android:paddingRight="1dp">
 
             <TextView
                 android:id="@+id/textViewNameLetter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:paddingTop="8dp"
-                android:text="Other reservations on this account:"
-                android:textSize="24dp"
-                android:textStyle="bold"
-                android:visibility="invisible" />
-
-        </LinearLayout>
-
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="?attr/selectableItemBackground"
-            android:orientation="horizontal"
-            android:paddingLeft="20dp"
-            android:visibility="invisible"
-            android:layout_marginBottom="20dp"
-            android:weightSum="1">
-
-
-            <CheckBox
-                android:id="@+id/checkBoxAll"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:text="ALL"
-                android:textSize="22dp"/>
-
-            <TextView
-                android:id="@+id/textViewNameAccompany"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="0.45"
-                android:text=""
-                android:textStyle="bold" />
-
-
-            <TextView
-                android:id="@+id/textViewNameAccompanyTable"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.2"
-                android:text=""
-                android:textStyle="bold" />
-
-
+                android:text="Other reservations on this account"
+                android:textSize="21dp"
+                android:visibility="invisible"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -109,43 +88,50 @@
             android:layout_height="match_parent"
             android:weightSum="1"
             android:orientation="vertical"
-            android:layout_marginTop="5dp"
-            android:paddingLeft="20dp">
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
+            >
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerViewAccompany"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.85"
-                android:scrollbars="vertical"
-                android:visibility="invisible" />
+                android:layout_weight="0.83"
+                android:scrollbars="none"
+                android:visibility="invisible"
+                />
 
             <View
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.02"/>
+                android:layout_marginTop="10dp"
+                android:layout_width="fill_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="#FFD4D2D2" />
 
-            
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.1" 
+                android:layout_weight="0.2"
                 android:orientation="horizontal"
+                android:layout_marginTop="10dp"
                 android:weightSum="3">
                 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"></View>
-                
+                    android:layout_weight="1.2"></View>
 
 
                 <Button
                     android:id="@+id/UserConfirm"
                     style="@style/Widget.AppCompat.Button.Colored"
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.6"
+                    android:paddingBottom="6dp"
+                    android:paddingTop="6dp"
                     android:text="@string/activity_results_confirm"
                     android:textColor="#FFFF"
                     android:theme="@style/User.Button"
@@ -155,7 +141,7 @@
                 <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"></View>
+                    android:layout_weight="1.2"></View>
                 
             </LinearLayout>
             

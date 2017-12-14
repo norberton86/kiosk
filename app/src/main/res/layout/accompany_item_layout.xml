@@ -1,41 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:weightSum="1"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-    android:background="?attr/selectableItemBackground">
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="#FFD4D2D2" />
 
-
-    <CheckBox
-        android:id="@+id/checkBoxStatus"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:orientation="horizontal" android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.1"
-
-         />
-
-    <TextView
-        android:layout_marginLeft="10dp"
-        android:id="@+id/textViewNameAccompany"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.45"
-        android:text="Willner Stacy"
-        android:textSize="22dp"/>
+        android:weightSum="1"
+        android:background="?attr/selectableItemBackground"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp">
 
 
+        <TextView
+            android:id="@+id/checkboxImage"
+            android:layout_width="0dp"
+            android:layout_weight="0.05"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/fa_icon_check_circle"
+            android:textColor="#f3f3f3"
+            android:textSize="40sp" />
 
-    <TextView
+        <TextView
+            android:id="@+id/textViewNameAccompany"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="0.95"
+            android:text="Willner Stacy"
+            android:textSize="22dp" />
 
-        android:id="@+id/textViewNameAccompanyTable"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.2"
-        android:text="N/A"
-        android:textSize="22dp"/>
 
 
+    </LinearLayout>
 
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="#FFD4D2D2" />
 
 </LinearLayout>
+
