@@ -46,7 +46,7 @@ public class AccompaniesActivity extends AppCompatActivity {
     @InjectView(R.id.textViewNameAccompanyTableMain) TextView textViewNameAccompanyTableMain;
 
 
-    @InjectView(R.id.textViewNameLetter) TextView textViewNameLetter;
+    @InjectView(R.id.textViewNameLetter) LinearLayout textViewNameLetter;
 
 
 
