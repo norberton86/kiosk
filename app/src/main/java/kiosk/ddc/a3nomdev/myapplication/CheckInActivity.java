@@ -8,6 +8,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import butterknife.ButterKnife;
@@ -19,7 +20,10 @@ import kiosk.ddc.a3nomdev.myapplication.util.FontManager;
 public class CheckInActivity extends AppCompatActivity {
 
 
+    @InjectView(R.id.textViewVipSupport) TextView textViewVipSupport;
     @InjectView(R.id.textViewVip) TextView textViewVip;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,7 @@ public class CheckInActivity extends AppCompatActivity {
 
         if(uc.getUsers().get(0).getIsSarElef()==1)
         {
+            textViewVipSupport.setVisibility(View.VISIBLE);
             textViewVip.setText("Please go to the reservation desk to receive a token of our appreciation for your generous donation");
         }
         else

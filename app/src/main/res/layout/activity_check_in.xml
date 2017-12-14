@@ -80,11 +80,20 @@
                         android:paddingRight="15dp">
 
                         <TextView
+                            android:id="@+id/textViewVipSupport"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Thank you for your participation and support"
+                            android:textSize="20sp"
+                            android:visibility="invisible"
+                            />
+
+                        <TextView
                             android:id="@+id/textViewVip"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="You have completed Check-in"
-                            android:textSize="15sp"
+                            android:textSize="18sp"
                             android:textStyle="bold"/>
 
 
