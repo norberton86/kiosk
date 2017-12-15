@@ -1,10 +1,10 @@
 package kiosk.ddc.a3nomdev.myapplication;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.MenuItem;
 
 import kiosk.ddc.a3nomdev.myapplication.fragment.LoginFragment;

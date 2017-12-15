@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kiosk.ddc.a3nomdev.myapplication.endPoint.ddcEndpoint;
-import kiosk.ddc.a3nomdev.myapplication.model.Id;
 import kiosk.ddc.a3nomdev.myapplication.model.User;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;

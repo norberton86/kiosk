@@ -1,11 +1,9 @@
 package kiosk.ddc.a3nomdev.myapplication.endPoint;
 
 
-
 import java.util.List;
 
 import kiosk.ddc.a3nomdev.myapplication.model.User;
-import kiosk.ddc.a3nomdev.myapplication.util.LocalStorage;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
