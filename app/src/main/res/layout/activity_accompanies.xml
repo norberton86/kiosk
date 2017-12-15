@@ -78,7 +78,7 @@
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Other reservations on this account"
+                android:text="Other reservations on this account(Click to select)"
                 android:textSize="21dp"
 
                 android:paddingTop="15dp"
