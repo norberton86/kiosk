@@ -11,6 +11,7 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -29,12 +30,16 @@ import android.widget.TextView;
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import butterknife.OnEditorAction;
 import butterknife.OnFocusChange;
 
+import butterknife.OnTextChanged;
 import kiosk.ddc.a3nomdev.myapplication.model.User;
 import kiosk.ddc.a3nomdev.myapplication.model.UserCollection;
 import kiosk.ddc.a3nomdev.myapplication.service.ddcService;
@@ -59,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
 
     FrameLayout progressBarHolder;
 
+    private static final long SPLASH_SCREEN_DELAY = 15000;
+    boolean goBack=false;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
@@ -106,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Timer();
     }
 
 
@@ -124,14 +132,25 @@ public class MainActivity extends AppCompatActivity {
 
     @OnFocusChange(R.id.editTextFirstName)
     void nameSelected() {
+
         loginType="name";
     }
 
     @OnFocusChange(R.id.editTextLastName)
     void companySelected() {
+
         loginType="name";
     }
 
+    @OnTextChanged(R.id.editTextFirstName)
+    protected void handleFirst(Editable editable) {
+        goBack=true;
+    }
+
+    @OnTextChanged(R.id.editTextLastName)
+    protected void handleLast(Editable editable) {
+        goBack=true;
+    }
 
     //---------------------------------------------------------------------------
 
@@ -264,6 +283,7 @@ public class MainActivity extends AppCompatActivity {
         else
             if(id==android.R.id.home)
             {
+                goBack=true;
                 // app icon in action bar clicked; goto parent activity.
                 this.finish();
                 return true;
@@ -272,6 +292,28 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    void Timer()
+    {
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+
+
+                if(!goBack)
+                {
+                    startActivity(new Intent(MainActivity.this, SplashActivity.class));
+                    finish();
+                }
+
+            }
+        };
+
+        // Simulate a long loading process on application startup.
+        Timer timer = new Timer();
+        timer.schedule(task, SPLASH_SCREEN_DELAY);
+    }
+
 
     void EnableButton()
     {
