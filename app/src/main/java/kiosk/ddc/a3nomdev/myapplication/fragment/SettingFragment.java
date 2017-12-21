@@ -1,6 +1,7 @@
 package kiosk.ddc.a3nomdev.myapplication.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -17,8 +18,13 @@ import com.yarolegovich.lovelydialog.LovelyInfoDialog;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import kiosk.ddc.a3nomdev.myapplication.AccompaniesActivity;
+import kiosk.ddc.a3nomdev.myapplication.CheckInActivity;
 import kiosk.ddc.a3nomdev.myapplication.R;
+import kiosk.ddc.a3nomdev.myapplication.model.UserCollection;
+import kiosk.ddc.a3nomdev.myapplication.service.ddcService;
 import kiosk.ddc.a3nomdev.myapplication.util.LocalStorage;
+import rx.Observer;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -50,16 +56,70 @@ public class SettingFragment extends Fragment {
         }
         else
         {
-            LocalStorage.setLogin(getActivity(),editUserSetting.getText().toString(),editPassSetting.getText().toString());
+
+            if(!LocalStorage.isConfigured(getActivity())) //if is not configurated
+            {
+                DisableButton();
+
+                ddcService.getService(LocalStorage.getServer(getActivity())).createKiosk(editID.getText().toString() ,editDescription.getText().toString())
+                        .subscribe(new Observer<String>() {
+
+                                       @Override
+                                       public void onCompleted() {
+                                       }
+
+                                       @Override
+                                       public void onError(Throwable e) {
+                                           EnableButton();
+                                           showDialog("Error","Error trying to create the Kiosk");
+                                       }
+
+                                       @Override
+                                       public void onNext(String result) {
+
+                                           EnableButton();
+
+                                           if(result.equalsIgnoreCase("Done"))
+                                           {
+                                                SaveSettings();
+                                           }
+
+                                       }
+                                   }
+                        );
+            }
+            else
+            {
+                SaveSettings();
+            }
 
 
-            String url=editUrlSettings.getText().toString();
-            String uuid=editID.getText().toString();
-            String description=editDescription.getText().toString();
-
-            LocalStorage.setSettings(getActivity(),url,uuid,description);
-            getActivity().finish();
         }
+    }
+
+    void EnableButton()
+    {
+        buttonSaveSettings.setEnabled(true);
+    }
+
+
+    void DisableButton()
+    {
+        buttonSaveSettings.setEnabled(true);
+    }
+
+
+    void SaveSettings()
+    {
+        LocalStorage.setLogin(getActivity(),editUserSetting.getText().toString(),editPassSetting.getText().toString());
+
+
+        String url=editUrlSettings.getText().toString();
+        String uuid=editID.getText().toString();
+        String description=editDescription.getText().toString();
+
+        LocalStorage.setSettings(getActivity(),url,uuid,description);
+        getActivity().finish();
     }
 
     void showDialog(String title,String message)

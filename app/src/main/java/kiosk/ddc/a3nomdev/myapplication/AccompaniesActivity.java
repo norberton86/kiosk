@@ -182,7 +182,7 @@ public class AccompaniesActivity extends AppCompatActivity {
 
         ShowLoading();
 
-        ddcService.getService(LocalStorage.getServer(this)).Post(Integer.parseInt(userSelected.getReservationId()) ,ids)
+        ddcService.getService(LocalStorage.getServer(this)).Post(LocalStorage.getID(this) ,ids)
                 .subscribe(new Observer<String>() {
 
                                @Override

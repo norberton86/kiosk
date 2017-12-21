@@ -22,6 +22,9 @@ public interface ddcEndpoint {
     @GET("friends/{id}/{familyId}")
     Observable<List<User>> GetFriends(@Path("id") int id, @Path("familyId") int familyId);
 
-    @POST("{reservationId}")
-    Observable<String> Post( @Path("reservationId") int reservationId,@Body List<Integer> value);
+    @POST("{kioskId}")
+    Observable<String> Post( @Path("kioskId") String kioskId,@Body List<Integer> value);
+
+    @POST("createKiosk/{guid}/{description}")
+    Observable<String> createKiosk( @Path("guid") String guid,@Path("description") String description);
 }

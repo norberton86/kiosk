@@ -80,11 +80,20 @@ public class ddcService {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
-    public static Observable<String> Post(int reservationId, ArrayList<Integer> value)
+    public static Observable<String> Post(String kioskId, ArrayList<Integer> value)
     {
 
 
-        return  ddcEndPoint.Post(reservationId,value)
+        return  ddcEndPoint.Post(kioskId,value)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public static Observable<String> createKiosk(String kioskId, String description)
+    {
+
+
+        return  ddcEndPoint.createKiosk(kioskId,description)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread());
     }
