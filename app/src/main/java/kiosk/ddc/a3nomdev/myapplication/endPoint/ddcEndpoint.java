@@ -27,4 +27,7 @@ public interface ddcEndpoint {
 
     @POST("createKiosk/{guid}/{description}")
     Observable<String> createKiosk( @Path("guid") String guid,@Path("description") String description);
+
+    @POST("InsertIntoQueue/{guid}")
+    Observable<String> InsertIntoQueue( @Path("guid") String guid,@Body String PrintObject);
 }

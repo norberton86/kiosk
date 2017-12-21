@@ -97,4 +97,13 @@ public class ddcService {
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread());
     }
+
+    public static Observable<String> InsertIntoQueue(String guid, String PrintObject)
+    {
+
+
+        return  ddcEndPoint.InsertIntoQueue(guid,PrintObject)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
 }

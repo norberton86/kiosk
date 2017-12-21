@@ -16,10 +16,15 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -199,12 +204,46 @@ public class AccompaniesActivity extends AppCompatActivity {
                                @Override
                                public void onNext(String result) {
 
+
+                                   if(result.equalsIgnoreCase("Done"))
+                                   {
+                                        InsertIntoQueue();
+                                   }
+
+                               }
+                           }
+                );
+
+
+
+
+    }
+
+    void InsertIntoQueue()
+    {
+        ddcService.getService(LocalStorage.getServer(this)).InsertIntoQueue(LocalStorage.getID(this) ,DataForQueue())
+                .subscribe(new Observer<String>() {
+
+                               @Override
+                               public void onCompleted() {
+                               }
+
+                               @Override
+                               public void onError(Throwable e) {
+                                   HideLoading();
+                                   EnableButton();
+                                   showDialog("Error","Error trying to insert into the Queue");
+                               }
+
+                               @Override
+                               public void onNext(String result) {
+
+                                   HideLoading();
                                    EnableButton();
 
                                    if(result.equalsIgnoreCase("Done"))
                                    {
 
-                                       HideLoading();
                                        Intent intent = new Intent(AccompaniesActivity.this, CheckInActivity.class);
                                        UserCollection uc = new UserCollection();
                                        uc.setUser(userSelected);
@@ -216,8 +255,24 @@ public class AccompaniesActivity extends AppCompatActivity {
                                }
                            }
                 );
+    }
 
 
+    String DataForQueue()
+    {
+          List<User> queue=new ArrayList<User>();
+          queue.add(userSelected);
+         for(User u: friends)
+         {
+            if(u.getAttended())
+            {
+                queue.add(u);
+            }
+         }
+
+        Type listType = new TypeToken<List<User>>() {}.getType();
+        Gson gson = new Gson();
+        return  gson.toJson(queue, listType);
 
 
     }
