@@ -11,40 +11,60 @@
         android:background="@drawable/shadow"
         android:elevation="2dp"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="20dp">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1"
+            android:layout_marginTop="10dp">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/editUserSetting"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+
+                    android:drawableLeft="@mipmap/user"
+                    android:hint="User Name"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/editPassSetting"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+
+                    android:drawableLeft="@mipmap/password"
+                    android:hint="Password"
+                    android:inputType="text"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+            android:layout_marginTop="20dp">
 
         <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/editUserSetting"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-
-                android:drawableLeft="@mipmap/user"
-                android:hint="User Name"
-                android:inputType="textEmailAddress"
-                android:singleLine="true" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/editPassSetting"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-
-                android:drawableLeft="@mipmap/password"
-                android:hint="Password"
-                android:inputType="text"
-                android:singleLine="true" />
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
             android:layout_height="wrap_content">
 
             <android.support.v7.widget.AppCompatEditText
@@ -59,7 +79,8 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="0.5"
             android:layout_height="wrap_content">
 
             <android.support.v7.widget.AppCompatEditText
@@ -73,20 +94,34 @@
                 android:singleLine="true" />
         </android.support.design.widget.TextInputLayout>
 
-        <android.support.design.widget.TextInputLayout
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:weightSum="3"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="20dp">
 
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/editUrlSettings"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+            <android.support.design.widget.TextInputLayout
+                android:layout_weight="1.50"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
 
-                android:drawableLeft="@mipmap/web"
-                android:hint="Server Url"
-                android:inputType="textWebEditText"
-                android:singleLine="true" />
-        </android.support.design.widget.TextInputLayout>
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/editUrlSettings"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+
+                    android:drawableLeft="@mipmap/web"
+                    android:hint="Server Url"
+                    android:inputType="textWebEditText"
+                    android:singleLine="true" />
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -108,8 +143,6 @@
                 android:layout_marginLeft="20dp"
                 android:layout_gravity="center|bottom"/>
         </LinearLayout>
-
-
 
     </LinearLayout>
 

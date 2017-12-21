@@ -7,6 +7,7 @@ import android.view.WindowManager;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import kiosk.ddc.a3nomdev.myapplication.util.LocalStorage;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -22,7 +23,18 @@ public class SplashActivity extends AppCompatActivity {
     @OnClick(R.id.layoutMaster)
     void scanClick() {
 
-        Intent intent = new Intent(SplashActivity.this,MainActivity.class);
-        startActivity(intent);
+        if(LocalStorage.isConfigured(this))
+        {
+            Intent intent = new Intent(SplashActivity.this,MainActivity.class);
+            startActivity(intent);
+        }
+        else
+        {
+            Intent intent = new Intent(SplashActivity.this,SettingsActivity.class);
+            startActivity(intent);
+        }
+
+            
+
     }
 }
