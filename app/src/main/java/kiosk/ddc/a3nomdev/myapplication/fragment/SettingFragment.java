@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.yarolegovich.lovelydialog.LovelyInfoDialog;
+
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -41,10 +43,10 @@ public class SettingFragment extends Fragment {
     @OnClick(R.id.buttonSaveSettings)
     void userClick() {
 
-        if(editPassSetting.getText().toString().equals("")||editUrlSettings.getText().toString().equals("")||editUserSetting.getText().toString().equals(""))
+        if(editPassSetting.getText().toString().equals("")||editUrlSettings.getText().toString().equals("")||editUserSetting.getText().toString().equals("")||editDescription.getText().toString().equals(""))
         {
             Shake(buttonSaveSettings);
-            Toast.makeText(getActivity(),"Not allowed empty fields",Toast.LENGTH_SHORT).show();
+            showDialog("Error","Not allowed empty fields");
         }
         else
         {
@@ -60,6 +62,15 @@ public class SettingFragment extends Fragment {
         }
     }
 
+    void showDialog(String title,String message)
+    {
+        new LovelyInfoDialog(getActivity())
+                .setTopColorRes(R.color.colorPrimary)
+                .setIcon(R.mipmap.information)
+                .setTitle(title)
+                .setMessage(message)
+                .show();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
