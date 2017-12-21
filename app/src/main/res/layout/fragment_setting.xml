@@ -48,6 +48,36 @@
             android:layout_height="wrap_content">
 
             <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/editID"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:drawableLeft="@mipmap/uuid"
+                android:hint="Id"
+                android:inputType="text"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/editDescription"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+
+                android:drawableLeft="@mipmap/description"
+                android:hint="Description"
+                android:inputType="text"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/editUrlSettings"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

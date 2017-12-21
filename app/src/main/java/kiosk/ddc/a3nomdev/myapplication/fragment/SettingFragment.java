@@ -29,6 +29,10 @@ public class SettingFragment extends Fragment {
     @InjectView(R.id.editPassSetting) EditText editPassSetting;
     @InjectView(R.id.editUserSetting) EditText editUserSetting;
 
+    @InjectView(R.id.editID) EditText editID;
+    @InjectView(R.id.editDescription) EditText editDescription;
+
+
     public SettingFragment() {
         // Required empty public constructor
     }
@@ -45,7 +49,13 @@ public class SettingFragment extends Fragment {
         else
         {
             LocalStorage.setLogin(getActivity(),editUserSetting.getText().toString(),editPassSetting.getText().toString());
-            LocalStorage.setSettings(getActivity(),editUrlSettings.getText().toString());
+
+
+            String url=editUrlSettings.getText().toString();
+            String uuid=editID.getText().toString();
+            String description=editDescription.getText().toString();
+
+            LocalStorage.setSettings(getActivity(),url,uuid,description);
             getActivity().finish();
         }
     }
@@ -60,6 +70,8 @@ public class SettingFragment extends Fragment {
         editPassSetting.setText(LocalStorage.getPass(getActivity()));
         editUserSetting.setText(LocalStorage.getUser(getActivity()));
         editUrlSettings.setText(LocalStorage.getServer(getActivity()));
+        editID.setText(LocalStorage.getID(getActivity()));
+        editDescription.setText(LocalStorage.getDescription(getActivity()));
         // Inflate the layout for this fragment;
 
         return view;

@@ -9,6 +9,7 @@ import android.view.MenuItem;
 
 import kiosk.ddc.a3nomdev.myapplication.fragment.LoginFragment;
 import kiosk.ddc.a3nomdev.myapplication.fragment.SettingFragment;
+import kiosk.ddc.a3nomdev.myapplication.util.LocalStorage;
 
 public class SettingsActivity extends AppCompatActivity implements LoginFragment.OnLogin {
 
@@ -24,7 +25,11 @@ public class SettingsActivity extends AppCompatActivity implements LoginFragment
 
 
         fragmentManager = getSupportFragmentManager();
-        Transaction(new LoginFragment());
+
+        if(LocalStorage.isConfigured(this))
+            Transaction(new LoginFragment());
+        else
+            Transaction(new SettingFragment());
 
     }
 
