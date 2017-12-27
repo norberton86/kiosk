@@ -59,7 +59,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:text="Not you? Please click back to retry or see a representative at the check-in desk"
+                            android:text="Can't find your name?  Please click back to retry or see a representative at the check in desk."
                             android:textSize="18dp"
                             android:textStyle="bold" />
 

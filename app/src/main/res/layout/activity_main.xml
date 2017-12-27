@@ -90,30 +90,17 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="8dp"
                 android:orientation="horizontal"
-                android:weightSum="3">
+                android:weightSum="2">
+
+
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:gravity="center"
                     android:orientation="vertical"
-                    android:visibility="invisible">
-
-                    <View
-                        android:layout_width="2dp"
-                        android:layout_height="fill_parent"
-                        android:layout_marginBottom="5dp"
-                        android:layout_marginTop="5dp"
-                        android:background="#FFD4D2D2" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:paddingLeft="40dp"
+                    android:paddingRight="40dp">
 
 
                     <EditText
@@ -133,7 +120,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="18dp"
                         android:layout_marginTop="8dp"
-                        android:text="or" />
+                        android:text="and" />
 
 
                     <EditText
@@ -152,8 +139,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="50dp"
-                        android:layout_marginRight="50dp"
+                        android:paddingLeft="80dp"
+                        android:paddingRight="80dp"
                         android:gravity="center_horizontal"
                         android:orientation="horizontal">
 
@@ -162,7 +149,7 @@
                             android:id="@+id/UserLogin"
                             style="@style/Widget.AppCompat.Button.Colored"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:text="@string/activity_search_user_login"
                             android:textColor="#FFFF"
@@ -180,7 +167,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:orientation="vertical"
-                    android:visibility="invisible">
+                    >
 
                     <TextView
                         android:id="@+id/scanImage"
@@ -190,28 +177,6 @@
                         android:text="@string/fa_icon_qrcode"
                         android:textColor="#000"
                         android:textSize="200sp" />
-
-                    <!--<LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_horizontal"
-                        android:orientation="horizontal"
-                        android:layout_marginRight="50dp"
-                        android:layout_marginLeft="50dp">
-
-
-                        <Button
-                            android:id="@+id/buttonScan"
-                            style="@style/Widget.AppCompat.Button.Colored"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/activity_search_button_scan"
-                            android:textColor="#FFFF"
-                            android:theme="@style/Scan.Button" />
-
-                    </LinearLayout>-->
-
 
                 </LinearLayout>
 

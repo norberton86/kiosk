@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.scanImage)
     void scanClick() {
-
+        goBack=true;
         Intent intent = new Intent(MainActivity.this, ScanActivity.class);
         startActivityForResult(intent, REQUEST_SCAN);
     }
