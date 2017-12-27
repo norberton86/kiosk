@@ -119,9 +119,12 @@ public class MainActivity extends AppCompatActivity {
                 int heightDiff = activityRootView.getRootView().getHeight() - activityRootView.getHeight();
                 if (heightDiff > dpToPx(MainActivity.this, 200)) { // if more than 200 dp, it's probably a keyboard...
                     ButtonFloatingContainer.setVisibility(View.VISIBLE);
+                    UserLogin.setVisibility(View.INVISIBLE);
                 }
-                else
+                else {
                     ButtonFloatingContainer.setVisibility(View.INVISIBLE);
+                    UserLogin.setVisibility(View.VISIBLE);
+                }
             }
         });
     }
