@@ -7,17 +7,22 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.animation.AlphaAnimation;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.yarolegovich.lovelydialog.LovelyInfoDialog;
 
@@ -48,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
     @InjectView(R.id.editTextFirstName) EditText editTextFirstName;
     @InjectView(R.id.editTextLastName) EditText editTextLastName;
     @InjectView(R.id.UserLogin) Button UserLogin;
+    @InjectView(R.id.ButtonFloatingContainer) LinearLayout ButtonFloatingContainer;
+    @InjectView(R.id.UserLoginFloating) Button UserLoginFloating;
 
     AlphaAnimation inAnimation;
     AlphaAnimation outAnimation;
@@ -104,6 +111,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Timer();
+
+        final View activityRootView = findViewById(R.id.RelativeFather);
+        activityRootView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                int heightDiff = activityRootView.getRootView().getHeight() - activityRootView.getHeight();
+                if (heightDiff > dpToPx(MainActivity.this, 200)) { // if more than 200 dp, it's probably a keyboard...
+                    ButtonFloatingContainer.setVisibility(View.VISIBLE);
+                }
+                else
+                    ButtonFloatingContainer.setVisibility(View.INVISIBLE);
+            }
+        });
     }
 
 
@@ -157,6 +177,11 @@ public class MainActivity extends AppCompatActivity {
     void userClick() {
 
        navAndGo();
+    }
+
+    @OnClick(R.id.UserLoginFloating)
+    void userFloatingClick(){
+        navAndGo();
     }
 
     void navAndGo()
@@ -329,5 +354,12 @@ public class MainActivity extends AppCompatActivity {
         progressBarHolder.setVisibility(View.VISIBLE);
     }
 
+
+    //----------------------------------------------------------------------------------------------
+
+    public static float dpToPx(Context context, float valueInDp) { //used to help to detect if keyboard is open
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, valueInDp, metrics);
+    }
 
 }

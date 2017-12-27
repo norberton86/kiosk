@@ -19,33 +19,32 @@
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label=""
-
+            android:label="Back"
             android:screenOrientation="landscape"
-            android:windowSoftInputMode="stateHidden">
+            android:windowSoftInputMode="stateHidden|adjustResize">
 
         </activity>
-        <activity android:name=".ScanActivity" />
+        <activity android:name=".ScanActivity" android:label="Back" />
         <activity
             android:name=".ResultActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label=""
+            android:label="Back"
             android:screenOrientation="landscape" />
         <activity
             android:name=".CheckInActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label=""
+            android:label="Back"
             android:screenOrientation="landscape" />
         <activity
             android:name=".SettingsActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label="@string/activity_settings"
+            android:label="Back"
             android:screenOrientation="landscape"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".AccompaniesActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label=""
+            android:label="Back"
             android:screenOrientation="landscape" />
 
         <activity android:name=".SplashActivity"
