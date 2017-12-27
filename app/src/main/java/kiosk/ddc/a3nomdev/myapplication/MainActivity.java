@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+/*
     @OnFocusChange(R.id.editTextFirstName)
     void nameSelected() {
 
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
 
         loginType="name";
     }
-
+*/
     @OnTextChanged(R.id.editTextFirstName)
     protected void handleFirst(Editable editable) {
         goBack=true;
@@ -203,6 +203,8 @@ public class MainActivity extends AppCompatActivity {
             showDialog("Error","Fill at least one field");
             return;
         }
+
+        loginType="name";
 
         CallWebService();
     }
