@@ -22,7 +22,7 @@ public class SettingsActivity extends AppCompatActivity implements LoginFragment
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-
+        actionBar.setHomeAsUpIndicator(R.mipmap.myback);
 
         fragmentManager = getSupportFragmentManager();
 

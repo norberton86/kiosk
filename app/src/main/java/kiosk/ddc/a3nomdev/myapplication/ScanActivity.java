@@ -21,8 +21,8 @@ public class ScanActivity extends AppCompatActivity implements ZBarScannerView.R
         setContentView(mScannerView);                // Set the scanner view as the content view
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.mipmap.myback);
 
     }
 

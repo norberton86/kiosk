@@ -26,8 +26,8 @@ public class ResultActivity extends AppCompatActivity {
         ButterKnife.inject(this);
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
-
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeAsUpIndicator(R.mipmap.myback);
 
 
         Intent i = getIntent();

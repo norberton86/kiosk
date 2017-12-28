@@ -71,6 +71,7 @@ public class AccompaniesActivity extends AppCompatActivity {
         ButterKnife.inject(this);
 
         android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setHomeAsUpIndicator(R.mipmap.myback);
 
         actionBar.setDisplayHomeAsUpEnabled(true);
         friends=new ArrayList<User>();
