@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
                 android:gravity="center"
-                android:text="Welcome to the MYRCB 113th Dinner"
+                android:text="To locate your reservation please enter your name OR click the QR code icon."
                 android:textSize="25dp"
                 android:textStyle="bold" />
 
@@ -62,7 +62,7 @@
                     android:textStyle="italic"
                     android:visibility="invisible"/>
 
-                <TextView
+                <!--<TextView
                     android:id="@+id/textView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
                     android:gravity="center"
                     android:text="SEARCH"
                     android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold" />-->
 
 
                 <TextView

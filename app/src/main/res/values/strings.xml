@@ -2,7 +2,7 @@
     <string name="app_name">DDC</string>
     <string name="activity_settings">Settings</string>
     <string name="activity_results_confirm">Confirm</string>
-    <string name="activity_search_reservation">Please enter your name to locate your reservation</string>
+    <string name="activity_search_reservation">(After clicking the QR code icon, the scanning screen will appear. You can scan the QR code that was sent to you by placing it in front of the camera located on the back left of this device).</string>
     <string name="fa_icon_qrcode">&#xf029;</string>
     <string name="fa_icon_check_circle">&#xf058;</string>
     <string name="activity_search_user_login">SEARCH</string>
