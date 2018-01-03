@@ -57,8 +57,8 @@ public class SettingFragment extends Fragment {
         else
         {
 
-            if(!LocalStorage.isConfigured(getActivity())) //if is not configurated
-            {
+            //if(!LocalStorage.isConfigured(getActivity())) //if is not configurated
+            //{
                 DisableButton();
 
                 ddcService.getService(LocalStorage.getServer(getActivity())).createKiosk(editID.getText().toString() ,editDescription.getText().toString())
@@ -87,11 +87,11 @@ public class SettingFragment extends Fragment {
                                        }
                                    }
                         );
-            }
+            /*}
             else
             {
                 SaveSettings();
-            }
+            }*/
 
 
         }
