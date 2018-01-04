@@ -99,42 +99,50 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:paddingLeft="40dp"
-                    android:paddingRight="40dp">
+                    android:layout_weight="1.3"
+                    android:orientation="vertical">
 
 
-                    <EditText
-                        android:id="@+id/editTextLastName"
-                        style="@style/Widget.AppCompat.EditText"
+                    <LinearLayout
+                        android:weightSum="1"
+                        android:orientation="horizontal"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="25sp"
-                        android:hint="Last Name  /  Company Name"
-                        android:inputType="textPersonName"
-                        android:theme="@style/UserName.EditText" />
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:id="@+id/editTextLastName"
+                            style="@style/Widget.AppCompat.EditText"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.45"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:hint="Last Name / Company Name"
+                            android:inputType="textPersonName"
+                            android:theme="@style/UserName.EditText" />
 
 
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="18dp"
-                        android:layout_marginTop="8dp"
-                        android:text="and" />
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.1"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:text="and" />
 
 
-                    <EditText
-                        android:id="@+id/editTextFirstName"
-                        style="@style/Widget.AppCompat.EditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:textSize="25sp"
-                        android:hint="First Name"
-                        android:inputType="textPersonName"
-                        android:theme="@style/UserName.EditText" />
+                        <EditText
+                            android:id="@+id/editTextFirstName"
+                            style="@style/Widget.AppCompat.EditText"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.45"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:hint="First Name"
+                            android:inputType="textPersonName"
+                            android:theme="@style/UserName.EditText" />
+                    </LinearLayout>
+
+
 
 
 
@@ -164,7 +172,7 @@
                     android:id="@+id/mio"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="0.7"
                     android:orientation="vertical"
                     android:gravity="center_horizontal"
                     >
@@ -177,6 +185,13 @@
                         android:text="@string/fa_icon_qrcode"
                         android:textColor="#000"
                         android:textSize="200sp" />
+                      <TextView
+                          android:gravity="center_horizontal"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:textSize="17sp"
+                          android:text="Please press the QCR Code and scan your QCR code on the back left of the tablet"/>
+
 
                 </LinearLayout>
 
@@ -194,12 +209,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-        android:weightSum="2">
+        android:weightSum="1">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" android:orientation="horizontal" android:gravity="center_horizontal">
+            android:layout_weight="0.7" android:orientation="horizontal" android:gravity="center_horizontal">
 
             <Button
                 style="@style/Widget.AppCompat.Button.Colored"
@@ -216,7 +231,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="0.3">
 
 
         </LinearLayout>

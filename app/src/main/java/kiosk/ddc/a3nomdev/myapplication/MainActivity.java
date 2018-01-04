@@ -104,12 +104,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        editTextLastName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        /*editTextLastName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 return F( v,  actionId,  event);
             }
-        });
+        }); */
 
         Timer();
 

@@ -40,12 +40,7 @@ public class AccompanyAdapter  extends RecyclerView.Adapter<AccompanyAdapter.Mai
     public void onBindViewHolder(final AccompanyAdapter.MainViewHolder holder, int position) {
         final User accompany = data.get(position);
 
-        String table;
-
-        if(accompany.getTable()!=-1)
-        table=  "Table - "+accompany.getTable().toString();
-        else
-            table= "Table - N/A";
+        String table=accompany.getTable().toString();
 
         holder.getTextViewName().setText(accompany.getLastName()+", "+accompany.getTitle()+" "+accompany.getFirstName()+" ("+table+")");
 

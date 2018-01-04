@@ -43,8 +43,8 @@ public class UserCollection implements Serializable {
 
         for(User u: users)
         {
-            String table=u.getTable()==-1?"N/A":u.getTable().toString();
-            result.add(u.getFirstName()+" , "+u.getLastName()+ "  Table - "+table);
+            String table=u.getTable().toString();
+            result.add(u.getFirstName()+" "+u.getLastName()+ "  Table - "+table);
         }
         return result;
     }

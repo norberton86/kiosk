@@ -82,7 +82,7 @@ public class AccompaniesActivity extends AppCompatActivity {
 
         textViewNameAccompanyMain.setText(userSelected.getLastName()+", "+userSelected.getTitle()+" "+userSelected.getFirstName());
         textViewNameAccompanyAddressMain.setText(userSelected.getFullAddress());
-        textViewNameAccompanyTableMain.setText(userSelected.getTable()!=-1?"Table - "+userSelected.getTable().toString():"Table - N/A");
+        textViewNameAccompanyTableMain.setText("Table - "+userSelected.getTable().toString());
 
         progressBarHolder = (FrameLayout) findViewById(R.id.progressBarHolder);
 

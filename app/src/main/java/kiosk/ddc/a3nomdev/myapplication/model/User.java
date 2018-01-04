@@ -21,7 +21,7 @@ public class User implements Serializable{
     private String tableType;
     @SerializedName("table")
     @Expose
-    private Integer table;
+    private String table;
     @SerializedName("attended")
     @Expose
     private Boolean attended;
@@ -74,11 +74,11 @@ public class User implements Serializable{
         this.tableType = tableType;
     }
 
-    public Integer getTable() {
+    public String getTable() {
         return table;
     }
 
-    public void setTable(Integer table) {
+    public void setTable(String table) {
         this.table = table;
     }
 
